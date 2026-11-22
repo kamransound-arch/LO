@@ -15,14 +15,13 @@ button{border:0;border-radius:10px;padding:10px 13px;background:#40c7b5;color:#0
 .toolbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.notice{border-left:3px solid #40c7b5;background:#173347;padding:11px;border-radius:8px;font-size:13px;color:#c5e0e9}
 .item{border-top:1px solid #29435a;padding:12px 0}.item:first-child{border-top:0}.item strong{display:block;font-size:15px}.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}.chip{border-radius:20px;padding:5px 9px;background:#1c4350;color:#d8f5f0;font-size:12px}.unknown{background:#493b29;color:#ffdfa9}
 #status{font-size:12px;color:#9fb8c9;margin:10px 0}.nav{display:flex;gap:7px;overflow-x:auto;padding:10px 0 14px;scrollbar-width:none}.nav button{white-space:nowrap;background:#16283c;color:#c3d2e2;border:1px solid #294058;border-radius:12px;padding:9px 13px}.nav button.active{background:#1a5556;color:white;border-color:#51cbb9}
-#login,#forgot,#newPassword{max-width:520px;margin:30px auto}.sectionhead{font-size:12px;color:#82cbbf;text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px}
+.viewtabs{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:10px 0 15px}.viewtabs button{font-size:12px;padding:11px 3px;background:#20364b;color:#d2e1ed}.viewtabs button.active{background:#40c7b5;color:#08252b}.viewpane.hidden{display:none!important}.editbtn{font-size:12px;padding:6px 10px;margin-top:8px}.historyitem{border-bottom:1px solid #29435a;padding:12px 0}#login,#forgot,#newPassword{max-width:520px;margin:30px auto}.sectionhead{font-size:12px;color:#82cbbf;text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px}
 @media(max-width:550px){.num{font-size:23px}.stats{gap:7px}.stat{padding:11px 9px}.toolbar{grid-template-columns:1fr}main{padding:13px 12px 70px}}
 </style></head><body><header><div><div class="brand">◉ <span>LO</span></div><div class="sub">Lydteknisk oversikt · BK / ST</div></div><span class="pill" id="connection">IKKE INNLOGGET</span></header><main>
 <section id="login" class="card"><h1>Logg inn</h1><p class="muted">Bruk din godkjente LO-konto. Ingen lagerdata lagres i nettleserens lokale utstyrsregister.</p><form id="loginForm"><label>E-post<input id="email" type="email" autocomplete="username" required></label><label>Passord<input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" type="submit">Logg inn</button></form><button class="linkbutton" id="forgotButton" type="button">Glemt passord?</button><p id="loginError" class="error" role="alert"></p></section>
 <section id="forgot" class="card hidden"><h1>Tilbakestill passord</h1><p class="muted">Skriv inn e-postadressen din. Du får en lenke for å velge nytt passord.</p><form id="forgotForm"><label>E-post<input id="resetEmail" type="email" autocomplete="email" required></label><button id="sendReset" type="submit">Send tilbakestillingslenke</button></form><p id="forgotMessage" role="status"></p><button class="secondary" id="backLogin" type="button">Tilbake til innlogging</button></section>
 <section id="newPassword" class="card hidden"><h1>Opprett nytt passord</h1><p class="muted">Velg et nytt passord for LO-kontoen din.</p><form id="newPasswordForm"><label>Nytt passord<input id="newPass" type="password" autocomplete="new-password" minlength="8" required></label><label>Gjenta nytt passord<input id="confirmPass" type="password" autocomplete="new-password" minlength="8" required></label><button id="savePassword" type="submit">Lagre nytt passord</button></form><p id="passwordMessage" role="status"></p></section>
-<section id="app" class="hidden"><div class="row" style="margin-bottom:14px"><div><h1>Utstyrsoversikt</h1><div class="sub" id="who"></div></div><button class="secondary" id="logout">Logg ut</button></div><div class="nav" id="venueTabs" aria-label="Velg bygg"><button type="button" data-venue="all" class="active">Alle bygg</button><button type="button" data-venue="Bærum Kulturhus">Bærum Kulturhus</button><button type="button" data-venue="Sandvika Teater">Sandvika Teater</button></div><div class="sectionhead">Lagerstatus</div><div class="stats" style="margin-bottom:14px"><div class="stat"><div class="small">Utstyrsposter</div><div class="num" id="equipmentCount">–</div></div><div class="stat"><div class="small">BK · opptalt</div><div class="num" id="bkCount">–</div></div><div class="stat"><div class="small">ST · opptalt</div><div class="num" id="stCount">–</div></div></div><div class="card"><div class="sectionhead">Utstyrsregister</div><div class="notice">Opptalt beholdning vises per bygg. «Ikke opptalt» betyr ukjent antall, ikke null. Flytting mellom rom registreres i Supabase. Ukjent beholdning kan ikke flyttes før opptelling.</div><input id="search" placeholder="Søk etter utstyr, kategori, modell …" aria-label="Søk i utstyr"><div class="toolbar"><select id="venue"><option value="all">Begge bygg</option><option value="Bærum Kulturhus">Bærum Kulturhus</option><option value="Sandvika Teater">Sandvika Teater</option></select><select id="room"><option value="all">Alle rom</option></select><select id="countFilter"><option value="all">Alle opptellingsstatuser</option><option value="uncounted">Ikke opptalt i begge bygg</option><option value="counted">Opptalt i minst ett bygg</option></select></div><div class="row"><span id="resultCount" class="small"></span><button id="refresh" class="secondary">Oppdater</button></div><div id="status" role="status"></div><div id="items"></div></div>
-<div class="card" id="moveCard"><div class="sectionhead">Lagerflytting</div><h2>Flytt utstyr mellom rom</h2>
+<section id="app" class="hidden"><div class="row" style="margin-bottom:14px"><div><h1>Utstyrsoversikt</h1><div class="sub" id="who"></div></div><button class="secondary" id="logout">Logg ut</button></div><div class="nav" id="venueTabs" aria-label="Velg bygg"><button type="button" data-venue="all" class="active">Alle bygg</button><button type="button" data-venue="Bærum Kulturhus">Bærum Kulturhus</button><button type="button" data-venue="Sandvika Teater">Sandvika Teater</button></div><div class="viewtabs" id="viewTabs"><button data-view="equipment" class="active">Utstyr</button><button data-view="rooms">Rom</button><button data-view="move">Flytting</button><button data-view="history">Historikk</button></div><div class="sectionhead">Lagerstatus</div><div class="stats" style="margin-bottom:14px"><div class="stat"><div class="small">Utstyrsposter</div><div class="num" id="equipmentCount">–</div></div><div class="stat"><div class="small">BK · opptalt</div><div class="num" id="bkCount">–</div></div><div class="stat"><div class="small">ST · opptalt</div><div class="num" id="stCount">–</div></div></div><div class="viewpane" id="view-equipment"><div class="card"><div class="sectionhead">Utstyrsregister</div><div class="notice">Opptalt beholdning vises per bygg. «Ikke opptalt» betyr ukjent antall, ikke null. Flytting mellom rom registreres i Supabase. Ukjent beholdning kan ikke flyttes før opptelling.</div><input id="search" placeholder="Søk etter utstyr, kategori, modell …" aria-label="Søk i utstyr"><div class="toolbar"><select id="venue"><option value="all">Begge bygg</option><option value="Bærum Kulturhus">Bærum Kulturhus</option><option value="Sandvika Teater">Sandvika Teater</option></select><select id="room"><option value="all">Alle rom</option></select><select id="countFilter"><option value="all">Alle opptellingsstatuser</option><option value="uncounted">Ikke opptalt i begge bygg</option><option value="counted">Opptalt i minst ett bygg</option></select></div><div class="row"><span id="resultCount" class="small"></span><button id="refresh" class="secondary">Oppdater</button></div><div id="status" role="status"></div><div id="items"></div></div></div><div class="viewpane hidden" id="view-rooms"><div class="card"><h2>Romoversikt</h2><div id="roomOverview"></div></div></div><div class="viewpane hidden" id="view-move"><div class="card" id="moveCard"><div class="sectionhead">Lagerflytting</div><h2>Flytt utstyr mellom rom</h2>
 <p class="muted">Velg en opptalt beholdning, antall og mottakerrom. Flyttingen lagres i Supabase med historikk.</p>
 <form id="moveForm"><label>Utstyr<select id="moveEquipment" required></select></label>
 <label>Fra rom<select id="moveFrom" required></select></label>
@@ -30,7 +29,7 @@ button{border:0;border-radius:10px;padding:10px 13px;background:#40c7b5;color:#0
 <label>Antall<input id="moveQuantity" type="number" min="1" step="1" required></label>
 <label>Merknad (valgfritt)<input id="moveNotes" maxlength="500" placeholder="F.eks. rigg / intern flytting"></label>
 <button id="moveSubmit" type="submit">Registrer flytting</button></form>
-<p id="moveMessage" role="status"></p></div></section></main>
+<p id="moveMessage" role="status"></p></div></div><div class="viewpane hidden" id="view-history"><div class="card"><div class="row"><h2>Flyttehistorikk</h2><button class="secondary" id="refreshHistory">Oppdater</button></div><div id="historyItems">Velg Historikk for å hente loggen.</div></div></div><div class="card hidden" id="editCard"><h2>Rediger utstyr</h2><p class="muted">Endre navn og opplysninger. Antall og rom håndteres gjennom lagerflytting.</p><form id="editForm"><input type="hidden" id="editId"><label>Navn<input id="editName" required maxlength="200"></label><label>Kategori<input id="editCategory" maxlength="200"></label><label>Produsent<input id="editManufacturer" maxlength="200"></label><label>Modell<input id="editModel" maxlength="200"></label><label>Serienummer<input id="editSerial" maxlength="200"></label><label>Merknader<input id="editNotes" maxlength="1000"></label><button id="editSave" type="submit">Lagre endringer</button> <button id="editCancel" class="secondary" type="button">Avbryt</button></form><p id="editMessage" role="status"></p></div></section></main>
 <script type="module">
 import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 const URL='https://nqzkpgiodgwzpuqbpozw.supabase.co';
@@ -114,9 +113,58 @@ function render(){
   }
   return `<article class="item"><strong>${escapeHTML(e.name)}</strong>
    <div class="small">${escapeHTML([e.category,e.manufacturer,e.model].filter(Boolean).join(' · '))}</div>
-   <div class="chips">${chips}</div></article>`;
+   <div class="chips">${chips}</div>${member?.role==='admin'?`<button type="button" class="secondary editbtn" data-edit="${escapeHTML(e.id)}">Rediger</button>`:''}</article>`;
  }).join('')||'<p class="muted">Ingen registrert beholdning i dette utvalget.</p>';
 }
+
+function switchView(view){
+ for(const p of document.querySelectorAll('.viewpane'))p.classList.toggle('hidden',p.id!=='view-'+view);
+ for(const b of document.querySelectorAll('#viewTabs button'))b.classList.toggle('active',b.dataset.view===view);
+ $('editCard').classList.add('hidden');
+ if(view==='rooms')renderRooms();if(view==='history')loadHistory();
+ window.scrollTo(0,0);
+}
+document.querySelectorAll('#viewTabs button').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.view)));
+function renderRooms(){
+ const venue=$('venue').value;
+ $('roomOverview').innerHTML=locations.filter(l=>venue==='all'||l.venue===venue).map(l=>{
+  const rows=stock.filter(s=>s.location_id===l.id);
+  return `<div class="item"><strong>${escapeHTML(locLabel(l))}</strong><div class="small">${rows.reduce((n,s)=>n+s.quantity,0)} enheter · ${rows.length} utstyrstyper</div><button type="button" class="secondary editbtn" data-openroom="${escapeHTML(l.id)}">Vis utstyr</button></div>`;
+ }).join('');
+}
+$('roomOverview').addEventListener('click',e=>{
+ const b=e.target.closest('[data-openroom]');if(!b)return;
+ const l=locations.find(x=>x.id===b.dataset.openroom);if(!l)return;
+ $('venue').value=l.venue;updateRooms();$('room').value=l.id;render();switchView('equipment');
+});
+async function loadHistory(){
+ const el=$('historyItems');el.textContent='Henter flyttehistorikk …';
+ const {data,error}=await db.from('lo_movements').select('equipment_id,from_location_id,to_location_id,quantity,moved_at,notes').order('moved_at',{ascending:false}).limit(100);
+ if(error){el.textContent='Kunne ikke hente historikk: '+errorText(error);return;}
+ const emap=new Map(equipment.map(e=>[e.id,e.name])),lmap=new Map(locations.map(l=>[l.id,locLabel(l)]));
+ el.innerHTML=(data||[]).map(m=>`<div class="historyitem"><strong>${escapeHTML(emap.get(m.equipment_id)||'Utstyr')} · ${m.quantity} stk.</strong><div class="small">${escapeHTML(lmap.get(m.from_location_id)||'Ukjent rom')} → ${escapeHTML(lmap.get(m.to_location_id)||'Ukjent rom')}</div><div class="small">${new Date(m.moved_at).toLocaleString('no-NO')}${m.notes?' · '+escapeHTML(m.notes):''}</div></div>`).join('')||'Ingen flyttinger registrert.';
+}
+$('refreshHistory').addEventListener('click',loadHistory);
+$('items').addEventListener('click',e=>{
+ const b=e.target.closest('[data-edit]');if(!b||member?.role!=='admin')return;
+ const item=equipment.find(x=>x.id===b.dataset.edit);if(!item)return;
+ for(const [id,v] of Object.entries({editId:item.id,editName:item.name,editCategory:item.category,editManufacturer:item.manufacturer,editModel:item.model,editSerial:item.serial_number,editNotes:item.notes}))$(id).value=v||'';
+ $('editMessage').textContent='';$('editCard').classList.remove('hidden');$('editCard').scrollIntoView({behavior:'smooth'});
+});
+$('editCancel').addEventListener('click',()=>$('editCard').classList.add('hidden'));
+$('editForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(member?.role!=='admin')return;
+ if(!confirm('Lagre endringer i utstyrsregisteret?'))return;
+ $('editSave').disabled=true;$('editMessage').textContent='Lagrer …';
+ const {error}=await db.rpc('lo_update_equipment_metadata',{
+ p_equipment_id:$('editId').value,p_name:$('editName').value.trim(),p_category:$('editCategory').value.trim()||null,
+ p_manufacturer:$('editManufacturer').value.trim()||null,p_model:$('editModel').value.trim()||null,
+ p_serial_number:$('editSerial').value.trim()||null,p_notes:$('editNotes').value.trim()||null});
+ $('editSave').disabled=false;
+ if(error){$('editMessage').className='error';$('editMessage').textContent='Kunne ikke lagre: '+errorText(error);return;}
+ $('editMessage').className='success';$('editMessage').textContent='Endringene er lagret.';await load();
+});
+
 $('moveEquipment').addEventListener('change',updateMoveFrom);
 $('moveFrom').addEventListener('change',updateMoveTo);
 $('moveForm').addEventListener('submit',async e=>{
