@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>KULÔTEA – BK / ST · v4.0</title><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="application-name" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest?v=40"><link rel="apple-touch-icon" sizes="180x180" href="./kulotea-touch-v41.png"><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><style>
+<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>KULÔTEA – BK / ST · v4.2</title><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="application-name" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest?v=40"><link rel="apple-touch-icon" sizes="180x180" href="./kulotea-touch-v41.png"><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><style>
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#091525;color:#e8f1fa}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
 header{position:sticky;top:0;z-index:3;background:#0c1b2d;border-bottom:1px solid #28415a;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -175,7 +175,152 @@ body.theme-black .card,body.theme-black .stat{background:linear-gradient(145deg,
 body.theme-black .nav button,body.theme-black .viewtabs button,body.theme-black button.secondary{background:linear-gradient(#424c51,#222b30 25%,#11191d);border-color:#64747b;color:#f0f8f9}
 body.theme-black .nav button.active,body.theme-black .viewtabs button.active{background:linear-gradient(#4d9e90,#1a6559 65%,#12453f);border-color:#91ddcf;color:white}
 body.theme-black button:not(.secondary):not(.linkbutton):not(.active){background:linear-gradient(#ffffff,#d6e2e3 25%,#a1b1b6 90%);border-color:#d3e0e2;color:#102025}
-</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>KULÔTEA</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v4.0</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
+
+/* KULÔTEA v4.2 — full Hybrid Console design system; visual only */
+:root{
+ --hc-line:#59717b;--hc-glint:#ffffff38;--hc-shadow:#000a;
+ --hc-recess:#07131a;--hc-led:#70f5d5;
+}
+body{
+ background:
+  radial-gradient(ellipse at 50% -8%,#315463 0%,transparent 48%),
+  repeating-linear-gradient(90deg,#ffffff02 0 1px,transparent 1px 5px),
+  linear-gradient(165deg,#101f28,#060b10 68%);
+}
+header{
+ border-bottom:2px solid #3b626b;
+ box-shadow:inset 0 1px #ffffff38,inset 0 -3px #03090d,0 9px 22px #0009;
+}
+header .brand{text-shadow:0 1px #ffffff30,0 3px 6px #000a}
+header .brand span{filter:drop-shadow(0 0 6px #63ddc044)}
+header .sub{color:#b3cbd0}
+main .card{
+ position:relative;
+ background:linear-gradient(145deg,#2a424d 0%,#1a303b 5%,#13232d 54%,#0c1921 100%);
+ border:1px solid #5b7480;
+ border-bottom:2px solid #09151b;
+ box-shadow:inset 0 1px #ffffff4a,inset 1px 0 #ffffff15,inset 0 -2px #0008,0 4px 0 #061016,0 10px 22px #0008;
+}
+main .card::before{
+ content:"";pointer-events:none;position:absolute;inset:1px 1px auto;
+ height:18px;border-radius:11px 11px 0 0;
+ background:linear-gradient(#ffffff0c,transparent);
+}
+.sectionhead,.build-label{
+ color:#a4e6d9;text-shadow:0 0 9px #6debc74a;
+}
+h1,h2{color:#f2fbfc;text-shadow:0 2px 3px #0009}
+.small,.muted{color:#afc5cb}
+.notice,.equipment-list-summary{
+ background:linear-gradient(155deg,#0b1b24,#172d36);
+ border:1px solid #44616a;border-left:4px solid #61dfc7;
+ box-shadow:inset 0 2px 5px #0009,inset 0 1px #ffffff12,0 2px 0 #071218;
+ border-radius:8px;
+}
+.equipment-list-summary{border-left-color:#7199a5}
+input,select{
+ background:linear-gradient(180deg,#050d13,#0b1a23 85%,#132a33);
+ border:1px solid #56717a;border-top-color:#253b45;
+ border-radius:8px;
+ box-shadow:inset 0 3px 8px #000c,inset 0 -1px #ffffff13,0 1px #ffffff10;
+ color:#f0fafb;
+}
+input:focus,select:focus{
+ border-color:#7ee6d3;outline:1px solid #78e5d0;
+ box-shadow:inset 0 3px 7px #000b,0 0 0 3px #53d7c52b,0 0 15px #47dbbb1e;
+}
+label{color:#d6e8ea;text-shadow:0 1px #0009}
+button:not(.linkbutton){
+ position:relative;
+ border-radius:9px;
+ border:1px solid #7ac7ba;
+ background:linear-gradient(180deg,#c3fff0 0%,#79e4d1 10%,#43c7b2 47%,#208f83 95%);
+ box-shadow:inset 0 1px #ffffffdc,inset 0 -3px #115a53,0 3px 0 #092d2b,0 6px 12px #0008;
+ text-shadow:0 1px #ffffff70;
+}
+button.secondary,.nav button,.viewtabs button{
+ border-color:#627d88;
+ color:#edf9fa;
+ background:linear-gradient(180deg,#536c78 0%,#304b58 10%,#1d3440 48%,#11232e 100%);
+ text-shadow:0 1px 2px #000c;
+ box-shadow:inset 0 1px #ffffff60,inset 0 -3px #07161d,0 3px 0 #071319,0 6px 10px #0009;
+}
+.nav button.active,.viewtabs button.active{
+ border-color:#91edda;
+ background:linear-gradient(180deg,#78c9b8 0%,#3a978b 14%,#1e7169 70%,#115149 100%);
+ box-shadow:inset 0 1px #ffffff90,inset 0 -3px #0c423c,0 3px 0 #061d1a,0 0 12px #52d7bb44;
+ color:#fff;text-shadow:0 1px 2px #062c2a;
+}
+button:not(.linkbutton):active{
+ transform:translateY(3px);
+ box-shadow:inset 0 3px 7px #0009,inset 0 0 0 1px #ffffff18,0 1px 0 #07151b;
+}
+button:disabled{filter:saturate(.55)}
+.viewtabs button{min-height:72px}
+.viewtabs button svg{filter:drop-shadow(0 2px 2px #0009)}
+.viewtabs button.active svg{filter:drop-shadow(0 0 5px #9cfbe27a)}
+.stats .stat{
+ background:linear-gradient(145deg,#334e5b 0%,#1a303b 18%,#101e28 100%);
+ border:1px solid #58727d;
+ box-shadow:inset 0 1px #ffffff59,inset 0 -2px #061119,0 3px 0 #061219,0 7px 15px #0008;
+}
+.stats .stat::before{height:4px;box-shadow:0 0 11px currentColor}
+.stat .num{text-shadow:0 2px 3px #000c,0 0 12px #c7fff217}
+.pill{
+ background:linear-gradient(#123e3c,#0a292b);
+ border:1px solid #5ba899;
+ box-shadow:inset 0 2px 5px #0009,0 1px #ffffff20,0 0 9px #49e6bb20;
+}
+.item,.historyitem{
+ border-top:1px solid #435d66;
+ box-shadow:inset 0 1px #ffffff0a;
+}
+.item strong,.historyitem strong{color:#f0fafb;text-shadow:0 1px 2px #0009}
+.room-row{
+ background:linear-gradient(145deg,color-mix(in srgb,var(--room-color,#777) 18%,#1c303a),#0e2029 80%);
+ border:1px solid #526a73;
+ border-left:5px solid var(--room-color,#777);
+ box-shadow:inset 0 1px #ffffff30,inset 0 -2px #0007,0 3px 0 #071219,0 6px 10px #0007;
+}
+.room-tag,.chip{
+ background:linear-gradient(180deg,color-mix(in srgb,var(--room-color,#3f8985) 19%,#29414b),#132830);
+ border:1px solid var(--room-color,#5c7c86);
+ box-shadow:inset 0 1px #ffffff30,inset 0 -2px #0007,0 2px 4px #0006;
+}
+.room-dot{box-shadow:0 0 0 2px #ffffff20,0 0 9px var(--room-color,#777)}
+.pager,.exportactions{padding-top:5px}
+#status,#exportStatus{color:#9cdbcf}
+#login,#forgot,#newPassword{border-top:2px solid #6f998f}
+#moveCard,#view-register .card,#view-history .card{border-top:2px solid #5d9389}
+body.theme-black{
+ background:radial-gradient(ellipse at 50% -10%,#263034,transparent 60%),linear-gradient(#080b0d,#020303);
+}
+body.theme-black main .card,body.theme-black .stats .stat{
+ background:linear-gradient(145deg,#30383d,#171f23 18%,#090d10 95%);
+ border-color:#59666e;
+}
+body.theme-black input,body.theme-black select{
+ background:linear-gradient(#040607,#11191c);border-color:#58666d;
+}
+body.theme-black .notice,body.theme-black .equipment-list-summary{
+ background:linear-gradient(#0a1315,#172023);border-color:#536a6b;border-left-color:#77c8b8;
+}
+body.theme-black .room-row{
+ background:linear-gradient(145deg,color-mix(in srgb,var(--room-color,#777) 14%,#22292d),#101517);
+ border-color:#56646a;border-left-color:var(--room-color,#777);
+}
+body.theme-black .room-tag,body.theme-black .chip{
+ background:linear-gradient(#29363a,#151e22);
+}
+@media(max-width:390px){
+ .viewtabs button{min-height:66px}
+ .stats .stat{padding:11px 8px}
+}
+@media(prefers-reduced-motion:reduce){
+ button:not(.linkbutton){transition:none}
+}
+
+</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>KULÔTEA</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v4.2</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
 <section id="login" class="card"><h1>Logg inn</h1><p class="muted">Bruk din godkjente LO-konto. Ingen lagerdata lagres i nettleserens lokale utstyrsregister.</p><form id="loginForm"><label>E-post<input id="email" type="email" autocomplete="username" required></label><label>Passord<input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" type="submit">Logg inn</button></form><button class="linkbutton" id="forgotButton" type="button">Glemt passord?</button><p id="loginError" class="error" role="alert"></p></section>
 <section id="forgot" class="card hidden"><h1>Tilbakestill passord</h1><p class="muted">Skriv inn e-postadressen din. Du får en lenke for å velge nytt passord.</p><form id="forgotForm"><label>E-post<input id="resetEmail" type="email" autocomplete="email" required></label><button id="sendReset" type="submit">Send tilbakestillingslenke</button></form><p id="forgotMessage" role="status"></p><button class="secondary" id="backLogin" type="button">Tilbake til innlogging</button></section>
 <section id="newPassword" class="card hidden"><h1>Opprett nytt passord</h1><p class="muted">Velg et nytt passord for LO-kontoen din.</p><form id="newPasswordForm"><label>Nytt passord<input id="newPass" type="password" autocomplete="new-password" minlength="8" required></label><label>Gjenta nytt passord<input id="confirmPass" type="password" autocomplete="new-password" minlength="8" required></label><button id="savePassword" type="submit">Lagre nytt passord</button></form><p id="passwordMessage" role="status"></p></section>
