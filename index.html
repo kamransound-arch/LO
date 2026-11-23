@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>LO – BK / ST · v3.2</title><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icon-192.png"><style>
+<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>LO – BK / ST · v3.3</title><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icon-192.png"><style>
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#091525;color:#e8f1fa}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
 header{position:sticky;top:0;z-index:3;background:#0c1b2d;border-bottom:1px solid #28415a;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -49,15 +49,15 @@ body.theme-black .brand span{color:#fff}
 body.theme-black #venueTabs button[data-venue="Bærum Kulturhus"].active{background:#1c6742;color:white}
 body.theme-black #venueTabs button[data-venue="Sandvika Teater"].active{background:#8d2735;color:white}
 
-/* v3.2: søkbare, lesbare utstyrsvalg på mobil */
+/* v3.3: søkbare, lesbare utstyrsvalg på mobil */
 .picker-search{margin:5px 0 8px!important;border-color:#548c9a!important}
 .picker-help{font-size:12px;color:#a9bed0;margin:3px 0 9px}
 #moveEquipment option,#search option{font-size:16px}
-</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>LO</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v3.2</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
+</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>LO</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v3.3</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
 <section id="login" class="card"><h1>Logg inn</h1><p class="muted">Bruk din godkjente LO-konto. Ingen lagerdata lagres i nettleserens lokale utstyrsregister.</p><form id="loginForm"><label>E-post<input id="email" type="email" autocomplete="username" required></label><label>Passord<input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" type="submit">Logg inn</button></form><button class="linkbutton" id="forgotButton" type="button">Glemt passord?</button><p id="loginError" class="error" role="alert"></p></section>
 <section id="forgot" class="card hidden"><h1>Tilbakestill passord</h1><p class="muted">Skriv inn e-postadressen din. Du får en lenke for å velge nytt passord.</p><form id="forgotForm"><label>E-post<input id="resetEmail" type="email" autocomplete="email" required></label><button id="sendReset" type="submit">Send tilbakestillingslenke</button></form><p id="forgotMessage" role="status"></p><button class="secondary" id="backLogin" type="button">Tilbake til innlogging</button></section>
 <section id="newPassword" class="card hidden"><h1>Opprett nytt passord</h1><p class="muted">Velg et nytt passord for LO-kontoen din.</p><form id="newPasswordForm"><label>Nytt passord<input id="newPass" type="password" autocomplete="new-password" minlength="8" required></label><label>Gjenta nytt passord<input id="confirmPass" type="password" autocomplete="new-password" minlength="8" required></label><button id="savePassword" type="submit">Lagre nytt passord</button></form><p id="passwordMessage" role="status"></p></section>
-<section id="app" class="hidden"><div class="row" style="margin-bottom:14px"><div><h1>Utstyrsoversikt</h1><div class="sub" id="who"></div></div><button class="secondary" id="logout">Logg ut</button></div><div class="build-label">VELG BYGG</div><div class="nav" id="venueTabs" aria-label="Velg bygg"><button type="button" data-venue="all" class="active">Alle</button><button type="button" data-venue="Bærum Kulturhus">BK</button><button type="button" data-venue="Sandvika Teater">ST</button></div><div class="viewtabs" id="viewTabs"><button type="button" data-view="equipment" class="active"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Utstyr</span></button><button type="button" data-view="rooms"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 21V9h6v12M3 9h18"/></svg><span>Rom</span></button><button type="button" data-view="move"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16m-5-5 5 5-5 5M20 17H4m5-5-5 5 5 5"/></svg><span>Flytting</span></button><button type="button" data-view="history"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l4 2"/></svg><span>Historikk</span></button><button type="button" data-view="register"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg><span>Nytt</span></button></div><div class="sectionhead">Lagerstatus</div><div class="stats" style="margin-bottom:14px"><div class="stat"><div class="small">Utstyrsposter</div><div class="num" id="equipmentCount">–</div></div><div class="stat"><div class="small">BK · opptalt</div><div class="num" id="bkCount">–</div></div><div class="stat"><div class="small">ST · opptalt</div><div class="num" id="stCount">–</div></div></div><div class="viewpane" id="view-equipment"><div class="card"><div class="sectionhead">Utstyrsregister</div><div class="notice">Opptalt beholdning vises per bygg. «Ikke opptalt» betyr ukjent antall, ikke null. Flytting mellom rom registreres i Supabase. Ukjent beholdning kan ikke flyttes før opptelling.</div><label for="equipmentSearchText" class="small">SØK ETTER PRODUSENT ELLER MODELL</label><input id="equipmentSearchText" class="picker-search" type="search" autocomplete="off" placeholder="F.eks. Shure SM57, Neumann, DI"><label for="search" class="small">VELG UTSTYR</label><select id="search" aria-label="Velg utstyr fra listen"><option value="all">Alle utstyr (136)</option></select><div class="toolbar"><select id="venue"><option value="all">Begge bygg</option><option value="Bærum Kulturhus">BK</option><option value="Sandvika Teater">ST</option></select><select id="room"><option value="all">Alle rom</option></select><div id="roomColorInfo" class="room-indicator"></div><select id="countFilter"><option value="all">Alle opptellingsstatuser</option><option value="uncounted">Ikke opptalt i begge bygg</option><option value="counted">Opptalt i minst ett bygg</option></select></div><div class="row"><span id="resultCount" class="small"></span><button id="refresh" class="secondary">Oppdater</button></div><div id="status" role="status"></div><div id="items"></div><div class="pager" id="pager"><button type="button" class="secondary" id="prevPage">← Forrige</button><span class="small" id="pageInfo"></span><button type="button" class="secondary" id="nextPage">Neste →</button></div></div></div><div class="viewpane hidden" id="view-rooms"><div class="card"><h2>Romoversikt</h2><div class="small">Fargekodene vises på romkort og ved valg av rom.</div><div id="roomOverview"></div></div></div><div class="viewpane hidden" id="view-move"><div class="card" id="moveCard"><div class="sectionhead">Lagerflytting</div><h2>Flytt utstyr mellom rom</h2>
+<section id="app" class="hidden"><div class="row" style="margin-bottom:14px"><div><h1>Utstyrsoversikt</h1><div class="sub" id="who"></div></div><button class="secondary" id="logout">Logg ut</button></div><div class="build-label">VELG BYGG</div><div class="nav" id="venueTabs" aria-label="Velg bygg"><button type="button" data-venue="all" class="active">Alle</button><button type="button" data-venue="Bærum Kulturhus">BK</button><button type="button" data-venue="Sandvika Teater">ST</button></div><div class="viewtabs" id="viewTabs"><button type="button" data-view="equipment" class="active"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Utstyr</span></button><button type="button" data-view="rooms"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 21V9h6v12M3 9h18"/></svg><span>Rom</span></button><button type="button" data-view="move"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16m-5-5 5 5-5 5M20 17H4m5-5-5 5 5 5"/></svg><span>Flytting</span></button><button type="button" data-view="history"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l4 2"/></svg><span>Historikk</span></button><button type="button" data-view="register"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg><span>Nytt</span></button></div><div class="sectionhead">Lagerstatus</div><div class="stats" style="margin-bottom:14px"><div class="stat"><div class="small">Utstyrsposter</div><div class="num" id="equipmentCount">–</div></div><div class="stat"><div class="small">BK · opptalt</div><div class="num" id="bkCount">–</div></div><div class="stat"><div class="small">ST · opptalt</div><div class="num" id="stCount">–</div></div></div><div class="viewpane" id="view-equipment"><div class="card"><div class="sectionhead">Utstyrsregister</div><div class="notice">Opptalt beholdning vises med nøyaktig rom og antall. «Ikke opptalt» betyr ukjent antall, ikke null. Flytting registreres i Supabase.</div><label for="equipmentSearchText" class="small">SØK ETTER PRODUSENT ELLER MODELL</label><input id="equipmentSearchText" class="picker-search" type="search" autocomplete="off" placeholder="F.eks. Shure SM57, Neumann, DI"><label for="search" class="small">VELG UTSTYR</label><select id="search" aria-label="Velg utstyr fra listen"><option value="all">Alle utstyr (136)</option></select><div class="toolbar"><select id="venue"><option value="all">Begge bygg</option><option value="Bærum Kulturhus">BK</option><option value="Sandvika Teater">ST</option></select><select id="room"><option value="all">Alle rom</option></select><div id="roomColorInfo" class="room-indicator"></div><select id="countFilter"><option value="all">Alle opptellingsstatuser</option><option value="uncounted">Ikke opptalt i begge bygg</option><option value="counted">Opptalt i minst ett bygg</option></select></div><div class="row"><span id="resultCount" class="small"></span><button id="refresh" class="secondary">Oppdater</button></div><div id="status" role="status"></div><div id="items"></div><div class="pager" id="pager"><button type="button" class="secondary" id="prevPage">← Forrige</button><span class="small" id="pageInfo"></span><button type="button" class="secondary" id="nextPage">Neste →</button></div></div></div><div class="viewpane hidden" id="view-rooms"><div class="card"><h2>Romoversikt</h2><div class="small">Fargekodene vises på romkort og ved valg av rom.</div><div id="roomOverview"></div></div></div><div class="viewpane hidden" id="view-move"><div class="card" id="moveCard"><div class="sectionhead">Lagerflytting</div><h2>Flytt utstyr mellom rom</h2>
 <p class="muted">Velg en opptalt beholdning, antall og mottakerrom. Flyttingen lagres i Supabase med historikk.</p>
 <form id="moveForm"><label>Fra rom<select id="moveFrom" required></select><div class="room-indicator" id="moveFromColor"></div></label>
 <label for="moveSearchText">Søk produsent / modell<input id="moveSearchText" class="picker-search" type="search" autocomplete="off" placeholder="F.eks. SM57, DPA 4011, Radial"></label><label>Utstyr<select id="moveEquipment" required></select></label><div id="moveAvailable" class="picker-help">Velg utstyr fra rullemenyen eller søk etter modell. Alle rom vises i romlisten.</div><label>Til rom<select id="moveTo" required></select><div class="room-indicator" id="moveToColor"></div></label>
@@ -194,8 +194,12 @@ function render(){
   const missing=!v.has('Bærum Kulturhus')&&!v.has('Sandvika Teater');
   if(filter==='uncounted'&&!missing)return false;
   if(filter==='counted'&&missing)return false;
-  if(room!=='all'&&!roomStock.has(e.id+'|'+room))return false;
-  return selectedEquipment==='all'||e.id===selectedEquipment;
+  if(selectedEquipment!=='all'&&e.id!==selectedEquipment)return false;
+  // Ved valgt utstyr vises alltid hvor det faktisk finnes, selv om romfilteret er feil.
+  if(selectedEquipment!=='all')return true;
+  if(room!=='all'&&!(roomStock.get(e.id+'|'+room)>0))return false;
+  if(venue!=='all'&&![...stock].some(s=>s.equipment_id===e.id&&s.quantity>0&&locMap.get(s.location_id)?.venue===venue))return false;
+  return true;
  });
  const pages=Math.max(1,Math.ceil(result.length/pageSize));
  currentPage=Math.min(currentPage,pages-1);
@@ -206,18 +210,14 @@ function render(){
  $('pager').classList.toggle('hidden',result.length<=pageSize);
  $('items').innerHTML=result.slice(currentPage*pageSize,(currentPage+1)*pageSize).map(e=>{
   const v=perItem.get(e.id)||new Map();
-  let chips='';
-  if(room!=='all'){
-   const l=locMap.get(room),n=roomStock.get(e.id+'|'+room);
-   chips=`<span class="chip">${escapeHTML(l?.room||'Rom')}: ${n} stk.</span>`;
-  }else{
-   const venues=venue==='all'?['Bærum Kulturhus','Sandvika Teater']:[venue];
-   chips=venues.map(name=>{
-    const short=name==='Bærum Kulturhus'?'BK':'ST';
-    return v.has(name)?`<span class="chip">${short}: ${v.get(name)} stk.</span>`
-      :`<span class="chip unknown">${short}: Ikke opptalt / ikke fordelt</span>`;
-   }).join('');
-  }
+  const placeRows=stock.filter(s=>s.equipment_id===e.id&&s.quantity>0)
+   .map(s=>({s,l:locMap.get(s.location_id)})).filter(x=>x.l)
+   .sort((a,b)=>locLabel(a.l).localeCompare(locLabel(b.l),'no'));
+  // Ved valgt utstyr vises samtlige faktiske plasseringer på tvers av bygg.
+  const shown=selectedEquipment!=='all'?placeRows:placeRows.filter(x=>
+   (venue==='all'||x.l.venue===venue)&&(room==='all'||x.l.id===room));
+  let chips=shown.map(({s,l})=>`<span class="room-tag" style="--room-color:${roomColor(l)}"><span class="room-dot"></span>${escapeHTML(locLabel(l))}: <strong>${s.quantity} stk.</strong></span>`).join('');
+  if(!chips)chips='<span class="chip unknown">Ingen opptalt beholdning / plassering registrert</span>';
   return `<article class="item"><strong>${escapeHTML(equipmentLabel(e))}</strong>
    <div class="small">${escapeHTML([e.category,e.manufacturer,e.model].filter(Boolean).join(' · '))}</div>
    <div class="chips">${chips}</div>${member?.role==='admin'?`<button type="button" class="secondary editbtn" data-edit="${escapeHTML(e.id)}">Rediger</button>`:''}</article>`;
@@ -297,12 +297,63 @@ $('exportCsv').addEventListener('click',()=>{
  const a=document.createElement('a');a.href=url;a.download='LO_flyttehistorikk_'+new Date().toISOString().slice(0,10)+'.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>window.URL.revokeObjectURL(url),30000);
  $('exportStatus').textContent=`CSV med ${rows.length} flyttinger er klargjort. Bruk Del / Lagre i Filer på iPhone om nødvendig.`;
 });
-$('exportPdf').addEventListener('click',()=>{
- const rows=reportRows();if(!rows.length){$('exportStatus').textContent='Ingen flyttinger å eksportere.';return;}
- const cols=Object.keys(rows[0]);const esc=escapeHTML;
- $('printReport').innerHTML='<h1>LO – Flyttehistorikk</h1><p>Rapportdato: '+esc(new Date().toLocaleString('no-NO'))+' · '+rows.length+' flyttinger</p><table><thead><tr>'+cols.map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+cols.map(c=>'<td>'+esc(r[c])+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
- window.print();
- $('exportStatus').textContent='Velg Skriv ut og deretter Lagre som PDF / Del på iPhone.';
+// Lag en faktisk PDF-fil. Fungerer også når iOS ikke viser utskriftsdialogen.
+let pdfLoader;
+function loadPdfLibrary(){
+ if(window.jspdf?.jsPDF)return Promise.resolve(window.jspdf.jsPDF);
+ if(!pdfLoader)pdfLoader=new Promise((resolve,reject)=>{
+  const script=document.createElement('script');
+  script.src='https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js';
+  script.onload=()=>window.jspdf?.jsPDF?resolve(window.jspdf.jsPDF):reject(new Error('PDF-biblioteket ble ikke lastet'));
+  script.onerror=()=>reject(new Error('Kunne ikke laste PDF-biblioteket. Kontroller internettforbindelsen.'));
+  document.head.appendChild(script);
+ });
+ return pdfLoader;
+}
+$('exportPdf').addEventListener('click',async()=>{
+ const rows=reportRows();const msg=$('exportStatus');
+ if(!rows.length){msg.textContent='Ingen flyttinger å eksportere.';return;}
+ const btn=$('exportPdf');btn.disabled=true;msg.textContent='Lager PDF-fil …';
+ try{
+  const jsPDF=await loadPdfLibrary();
+  const doc=new jsPDF({unit:'mm',format:'a4'});
+  const margin=15,pageWidth=210,usable=pageWidth-2*margin;
+  let y=19;
+  doc.setFont('helvetica','bold');doc.setFontSize(17);doc.text('LO - Flyttehistorikk',margin,y);y+=9;
+  doc.setFont('helvetica','normal');doc.setFontSize(9);
+  doc.text('Rapport: '+new Date().toLocaleString('no-NO')+'  |  '+rows.length+' flyttinger',margin,y);y+=9;
+  const safe=v=>String(v??'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^\x20-\x7e\u00c0-\u00ff]/g,'-');
+  for(const r of rows){
+   const lines=[
+    safe(r.Utstyr)+'  |  '+r.Antall+' stk.',
+    safe(r['Fra rom'])+'  ->  '+safe(r['Til rom']),
+    safe(r['Dato og tid'])+'  |  Bruker: '+safe(r['Bruker-ID']),
+    ...(r.Merknad?['Merknad: '+safe(r.Merknad)]:[])
+   ];
+   const wrapped=lines.flatMap(line=>doc.splitTextToSize(line,usable));
+   const needed=wrapped.length*4.5+6;
+   if(y+needed>282){doc.addPage();y=19;}
+   doc.setDrawColor(190,200,210);doc.line(margin,y-2,pageWidth-margin,y-2);
+   for(let i=0;i<lines.length;i++){
+    doc.setFont('helvetica',i===0?'bold':'normal');doc.setFontSize(i===0?10:8.5);
+    const parts=doc.splitTextToSize(lines[i],usable);
+    for(const part of parts){doc.text(part,margin,y);y+=4.5;}
+   }
+   y+=4;
+  }
+  const filename='LO_flyttehistorikk_'+new Date().toISOString().slice(0,10)+'.pdf';
+  const blob=doc.output('blob');
+  const file=new File([blob],filename,{type:'application/pdf'});
+  if(navigator.canShare?.({files:[file]})&&navigator.share){
+   try{await navigator.share({files:[file],title:'LO flyttehistorikk'});msg.textContent='PDF klar. Velg Lagre i Filer fra Del-menyen.';return;}
+   catch(err){if(err.name==='AbortError'){msg.textContent='Deling avbrutt. Trykk Lagre PDF igjen.';return;}}
+  }
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),60000);
+  msg.textContent='PDF generert. Finn den i Nedlastinger eller bruk Del / Lagre i Filer.';
+ }catch(err){msg.textContent='Kunne ikke lage PDF: '+errorText(err);}
+ finally{btn.disabled=false;}
 });
 $('refreshHistory').addEventListener('click',loadHistory);
 $('items').addEventListener('click',e=>{
