@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>KULÔTEA – BK / ST · v4.2</title><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="application-name" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest?v=40"><link rel="apple-touch-icon" sizes="180x180" href="./kulotea-touch-v41.png"><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><style>
+<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>KULÔTEA – BK / ST · v4.3</title><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="application-name" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest?v=40"><link rel="apple-touch-icon" sizes="180x180" href="./kulotea-touch-v41.png"><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><style>
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#091525;color:#e8f1fa}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
 header{position:sticky;top:0;z-index:3;background:#0c1b2d;border-bottom:1px solid #28415a;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -176,7 +176,7 @@ body.theme-black .nav button,body.theme-black .viewtabs button,body.theme-black 
 body.theme-black .nav button.active,body.theme-black .viewtabs button.active{background:linear-gradient(#4d9e90,#1a6559 65%,#12453f);border-color:#91ddcf;color:white}
 body.theme-black button:not(.secondary):not(.linkbutton):not(.active){background:linear-gradient(#ffffff,#d6e2e3 25%,#a1b1b6 90%);border-color:#d3e0e2;color:#102025}
 
-/* KULÔTEA v4.2 — full Hybrid Console design system; visual only */
+/* KULÔTEA v4.3 — full Hybrid Console design system; visual only */
 :root{
  --hc-line:#59717b;--hc-glint:#ffffff38;--hc-shadow:#000a;
  --hc-recess:#07131a;--hc-led:#70f5d5;
@@ -320,7 +320,45 @@ body.theme-black .room-tag,body.theme-black .chip{
  button:not(.linkbutton){transition:none}
 }
 
-</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>KULÔTEA</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v4.2</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
+
+/* KULÔTEA v4.3 — polished glass controls, including dropdown fields */
+:root{--hc-shine:#d9fff2;--hc-glow:#68e6d2}
+select,input{
+ -webkit-appearance:none;appearance:none;
+ background-color:#0d212b;
+ background-image:linear-gradient(112deg,transparent 0%,#ffffff0c 23%,#c3fff027 39%,#ffffff05 53%,transparent 73%),linear-gradient(180deg,#3d5965 0%,#243c48 8%,#102530 38%,#091a23 70%,#1a3540 100%);
+ background-repeat:no-repeat;
+ border:1px solid #75949e;
+ border-top-color:#a1c0c6;
+ box-shadow:inset 0 1px 0 #ffffff69,inset 0 2px 4px #ffffff0d,inset 0 -3px 7px #0009,0 2px 0 #071117,0 4px 10px #0007,0 0 10px #64e9ce0e;
+ text-shadow:0 1px 2px #000b;
+ transition:border-color .18s,box-shadow .18s,filter .18s;
+}
+select{
+ padding-right:40px;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='m5 7 5 5 5-5' fill='none' stroke='%23a5fff0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),linear-gradient(112deg,transparent 0%,#ffffff0b 22%,#c3fff02b 39%,#ffffff04 54%,transparent 74%),linear-gradient(180deg,#3d5965,#243c48 10%,#102530 40%,#091a23 75%,#1a3540);
+ background-position:right 13px center,center,center;
+ background-size:20px 20px,100% 100%,100% 100%;
+}
+select:focus,input:focus{
+ outline:1px solid #b0ffee;outline-offset:1px;border-color:#a5f6e7;
+ box-shadow:inset 0 1px #ffffffa0,inset 0 -3px 8px #0009,0 2px 0 #071117,0 0 0 3px #56e8cc39,0 0 18px #66f7d452;
+}
+select:active{filter:brightness(1.2)}
+select option{background:#162c36;color:#f4ffff}
+input::placeholder{color:#bed3d7}
+body.theme-black select,body.theme-black input{
+ background-color:#111a1e;
+ border-color:#839399;
+ box-shadow:inset 0 1px #ffffff50,inset 0 -3px 7px #000b,0 2px 0 #050809,0 4px 10px #000a;
+}
+body.theme-black select{
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='m5 7 5 5 5-5' fill='none' stroke='%23c9f9ef' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),linear-gradient(110deg,transparent,#ffffff24 37%,transparent 60%),linear-gradient(#47545a,#1d292e 13%,#0b1215 74%,#28383d);
+}
+body.theme-black input{background-image:linear-gradient(110deg,transparent,#ffffff20 37%,transparent 60%),linear-gradient(#47545a,#1d292e 13%,#0b1215 74%,#28383d)}
+@media(prefers-reduced-motion:reduce){select,input{transition:none}}
+
+</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>KULÔTEA</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v4.3</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
 <section id="login" class="card"><h1>Logg inn</h1><p class="muted">Bruk din godkjente LO-konto. Ingen lagerdata lagres i nettleserens lokale utstyrsregister.</p><form id="loginForm"><label>E-post<input id="email" type="email" autocomplete="username" required></label><label>Passord<input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" type="submit">Logg inn</button></form><button class="linkbutton" id="forgotButton" type="button">Glemt passord?</button><p id="loginError" class="error" role="alert"></p></section>
 <section id="forgot" class="card hidden"><h1>Tilbakestill passord</h1><p class="muted">Skriv inn e-postadressen din. Du får en lenke for å velge nytt passord.</p><form id="forgotForm"><label>E-post<input id="resetEmail" type="email" autocomplete="email" required></label><button id="sendReset" type="submit">Send tilbakestillingslenke</button></form><p id="forgotMessage" role="status"></p><button class="secondary" id="backLogin" type="button">Tilbake til innlogging</button></section>
 <section id="newPassword" class="card hidden"><h1>Opprett nytt passord</h1><p class="muted">Velg et nytt passord for LO-kontoen din.</p><form id="newPasswordForm"><label>Nytt passord<input id="newPass" type="password" autocomplete="new-password" minlength="8" required></label><label>Gjenta nytt passord<input id="confirmPass" type="password" autocomplete="new-password" minlength="8" required></label><button id="savePassword" type="submit">Lagre nytt passord</button></form><p id="passwordMessage" role="status"></p></section>
