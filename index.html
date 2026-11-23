@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>LO – BK / ST · v3.5</title><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icon-192.png"><style>
+<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>LO – BK / ST · v3.6</title><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icon-192.png"><style>
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#091525;color:#e8f1fa}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
 header{position:sticky;top:0;z-index:3;background:#0c1b2d;border-bottom:1px solid #28415a;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -49,11 +49,71 @@ body.theme-black .brand span{color:#fff}
 body.theme-black #venueTabs button[data-venue="Bærum Kulturhus"].active{background:#1c6742;color:white}
 body.theme-black #venueTabs button[data-venue="Sandvika Teater"].active{background:#8d2735;color:white}
 
-/* v3.5: søkbare, lesbare utstyrsvalg på mobil */
+/* v3.6: søkbare, lesbare utstyrsvalg på mobil */
 .picker-search{margin:5px 0 8px!important;border-color:#548c9a!important}
 .picker-help{font-size:12px;color:#a9bed0;margin:3px 0 9px}
 #moveEquipment option,#search option{font-size:16px}
-</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>LO</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v3.5</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
+
+/* LO v3.6 · AUDIO CONSOLE — presentasjon, ingen endringer i datalogikk */
+:root{--console-bg:#081017;--console-panel:#111e28;--console-edge:#29404d;--console-teal:#53d6c2;--console-amber:#f4b65e;--console-text:#eaf4f6;--console-muted:#a6bdc8}
+body{background:radial-gradient(ellipse at 55% -12%,#183947 0%,#081017 52%,#060b10 100%);color:var(--console-text);font-feature-settings:"tnum" 1}
+header{background:linear-gradient(105deg,#101e28,#0b171f 72%);border-bottom:1px solid #35515e;box-shadow:0 7px 25px #0005;padding:12px 16px}
+.brand{font-size:24px;letter-spacing:.11em;font-weight:900;line-height:1.15}.brand span{color:#70e2d0}
+.brand::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#5fdbbd;box-shadow:0 0 11px #50e6c3;margin-right:7px;vertical-align:middle}
+.sub{letter-spacing:.035em;font-size:11px;color:#a9c3c9}
+main{max-width:1140px;padding:14px 13px 95px}
+.card{background:linear-gradient(155deg,#152630,#0f1b25 80%);border:1px solid var(--console-edge);border-radius:13px;padding:17px;box-shadow:inset 0 1px #ffffff0a,0 5px 18px #0002}
+h1{font-size:22px;font-weight:800;letter-spacing:-.02em}h2{font-size:18px;font-weight:750;letter-spacing:-.01em}
+.sectionhead,.build-label{color:#77cdbf;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.sectionhead::before{content:"";display:inline-block;width:5px;height:5px;border-radius:1px;background:var(--console-amber);margin-right:8px;vertical-align:2px;box-shadow:0 0 8px #e6a95780}
+.pill{background:#102d2e;border-color:#32685e;color:#b5f0df;letter-spacing:.06em;font-weight:700}
+#connection::before{content:"●";color:#62e1b5;margin-right:5px}
+input,select{background:#091721;border:1px solid #385461;border-radius:8px;min-height:46px;padding:11px 13px;color:#f1fbff;box-shadow:inset 0 2px 4px #0003}
+input:focus,select:focus{outline:2px solid #54cbbb;outline-offset:1px;border-color:#67e0cc}
+input::placeholder{color:#8ca5af}
+label{color:#c7d9df;font-size:13px;font-weight:600}
+button{background:#52d2bd;color:#06272a;border-radius:8px;font-weight:800;min-height:40px;box-shadow:inset 0 1px #ffffff44}
+button.secondary{background:#213743;border:1px solid #3a5867;color:#e6f1f4;box-shadow:none}
+button:active{transform:translateY(1px)}button:disabled{opacity:.48;cursor:not-allowed}
+.nav{gap:7px;padding:7px 0 13px}.nav button{background:#12252f;color:#c4d8de;border:1px solid #36505c;border-radius:9px;min-height:42px;letter-spacing:.07em}
+.nav button.active,#venueTabs button[data-venue="Bærum Kulturhus"].active{background:#17664f;color:#fff;border-color:#45b98d}
+#venueTabs button[data-venue="Sandvika Teater"].active{background:#8d3341;color:#fff;border-color:#d15b69}
+.viewtabs{gap:6px;margin:6px 0 17px}.viewtabs button{background:linear-gradient(#1b303c,#142630);border:1px solid #35505d;border-radius:10px;min-height:67px;padding:9px 2px 8px;font-size:11px;color:#b7d0d7;gap:6px;box-shadow:inset 0 1px #ffffff0d}
+.viewtabs button svg{width:22px!important;height:22px!important;min-width:22px}
+.viewtabs button.active{background:linear-gradient(#276d69,#185452);border-color:#69cdb9;color:#f0fffb;box-shadow:inset 0 1px #ffffff24,0 0 0 1px #5bd5bd22}
+.stats{gap:8px}.stat{position:relative;overflow:hidden;background:linear-gradient(145deg,#192d38,#101f29);border:1px solid #34515c;border-radius:11px;padding:14px 10px 12px;box-shadow:inset 0 1px #ffffff0a}
+.stat::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:#55cbb7}
+.stat:nth-child(2)::before{background:#53c787}.stat:nth-child(3)::before{background:#dc6c76}
+.stat .small{font-size:11px;color:#adc4cc}.num{font-size:29px;letter-spacing:-.035em;color:#f5fbfa;font-weight:850}
+.notice{background:#112e33;border:1px solid #2b5b59;border-left:3px solid #5bcbb7;border-radius:8px;color:#c7e4e3}
+.item{border-color:#29414b;padding:13px 2px}.item strong{font-size:15px;color:#f1f9fa}.item .small{line-height:1.55}
+.chip{background:#1b3b40;color:#d6f4ee;border:1px solid #2d5b5b;border-radius:6px;font-size:11px;font-weight:650}
+.chip.unknown{background:#453726;color:#f4d9a6;border-color:#735834}
+.room-row{border-radius:9px;background:color-mix(in srgb,var(--room-color,#777) 8%,#13232d);border-top:1px solid #314752;border-right:1px solid #314752;border-bottom:1px solid #314752}
+.room-tag{border-radius:6px}.room-dot{box-shadow:0 0 0 2px #ffffff12}
+.historyitem{border-color:#2a424b}.picker-search{border-color:#508b8b!important}
+#moveCard form{display:grid;grid-template-columns:1fr;gap:5px}#moveCard form label{display:block}
+#moveSubmit,#regSubmit{width:100%;margin-top:6px;min-height:48px;font-size:15px}
+#status{color:#8bbdb8}.pager{gap:8px}.pager button{flex:1;min-width:0}
+/* Helsvart tema får samme konsolluttrykk uten å endre tema-knappen */
+body.theme-black{background:#030506;color:#f6f8f9}
+body.theme-black header{background:linear-gradient(#101316,#07090b);border-color:#343b3e}
+body.theme-black .card,body.theme-black .stat{background:linear-gradient(#141719,#0c0e10);border-color:#343d41}
+body.theme-black .viewtabs button{background:#171b1e;color:#d0dadd;border-color:#3b454a}
+body.theme-black .viewtabs button.active{background:#285b55;color:#f4fffc;border-color:#64b9a8}
+body.theme-black .nav button{background:#181c1f;color:#dce5e8;border-color:#3d464a}
+body.theme-black #venueTabs button[data-venue="Bærum Kulturhus"].active{background:#17664f;color:#fff}
+body.theme-black #venueTabs button[data-venue="Sandvika Teater"].active{background:#8d3341;color:#fff}
+body.theme-black input,body.theme-black select{background:#0b0e10;border-color:#47545a;color:#fff}
+body.theme-black button.secondary{background:#242c30;border-color:#45545b;color:#fff}
+body.theme-black .sectionhead,body.theme-black .build-label{color:#a9d9cf}
+body.theme-black .notice{background:#122422;border-color:#37645a;color:#e0f2ee}
+body.theme-black .chip{background:#22312f;color:#e5f6f1;border-color:#39544e}
+body.theme-black .room-row{background:color-mix(in srgb,var(--room-color,#777) 8%,#111)}
+@media(min-width:800px){main{padding:22px 24px 95px}.viewtabs button{min-height:76px}.stats{gap:13px}.stat{padding:17px}.toolbar{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:390px){main{padding:11px 9px 80px}.card{padding:13px}.viewtabs{gap:4px}.viewtabs button{font-size:10px}.brand{font-size:21px}.pill{font-size:9px;padding:6px}.num{font-size:25px}}
+@media(prefers-reduced-motion:reduce){button:active{transform:none}}
+</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>LO</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v3.6</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
 <section id="login" class="card"><h1>Logg inn</h1><p class="muted">Bruk din godkjente LO-konto. Ingen lagerdata lagres i nettleserens lokale utstyrsregister.</p><form id="loginForm"><label>E-post<input id="email" type="email" autocomplete="username" required></label><label>Passord<input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" type="submit">Logg inn</button></form><button class="linkbutton" id="forgotButton" type="button">Glemt passord?</button><p id="loginError" class="error" role="alert"></p></section>
 <section id="forgot" class="card hidden"><h1>Tilbakestill passord</h1><p class="muted">Skriv inn e-postadressen din. Du får en lenke for å velge nytt passord.</p><form id="forgotForm"><label>E-post<input id="resetEmail" type="email" autocomplete="email" required></label><button id="sendReset" type="submit">Send tilbakestillingslenke</button></form><p id="forgotMessage" role="status"></p><button class="secondary" id="backLogin" type="button">Tilbake til innlogging</button></section>
 <section id="newPassword" class="card hidden"><h1>Opprett nytt passord</h1><p class="muted">Velg et nytt passord for LO-kontoen din.</p><form id="newPasswordForm"><label>Nytt passord<input id="newPass" type="password" autocomplete="new-password" minlength="8" required></label><label>Gjenta nytt passord<input id="confirmPass" type="password" autocomplete="new-password" minlength="8" required></label><button id="savePassword" type="submit">Lagre nytt passord</button></form><p id="passwordMessage" role="status"></p></section>
