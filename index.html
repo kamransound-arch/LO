@@ -142,6 +142,39 @@ body.theme-black button:not(.secondary):not(.linkbutton):not(.active){background
 #equipmentListBody[hidden]{display:none!important}
 .equipment-list-summary{margin:10px 0 0;padding:11px 12px;border:1px solid #35535e;border-radius:9px;background:#0d202a;color:#a9cbd0;font-size:12px}
 body.theme-black .equipment-list-summary{background:#101618;border-color:#404e53}
+
+/* KULÔTEA v4.1 — Hybrid Console: visual-only enhancements */
+:root{--hy-metal:#58717d;--hy-highlight:#d0f7f1;--hy-glow:#5be7d0}
+body{background:radial-gradient(ellipse at 50% -10%,#25424e 0%,#0b1822 40%,#060b11 100%)}
+header{background:linear-gradient(165deg,#253e49 0%,#152832 26%,#0b171f 77%,#071017 100%);border-bottom:1px solid #64818b;box-shadow:inset 0 1px 0 #e1ffff35,inset 0 -2px 0 #000b,0 9px 22px #000a}
+.brand{color:#ecfcfa;text-shadow:0 1px 1px #000,0 0 16px #62e5d044}
+.brand span{color:#a5f9e9;text-shadow:0 0 13px #56e5ca6b,0 2px 2px #000}
+.card{background:linear-gradient(145deg,#2c4650 0%,#1c313b 3%,#152731 19%,#0d1b25 80%,#0b161d 100%);border:1px solid #4c6975;box-shadow:inset 0 1px 0 #ffffff3b,inset 1px 0 0 #ffffff12,inset 0 -2px 1px #0009,0 4px 0 #071117,0 12px 24px #0007;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.stat{border-color:#58717b;background:linear-gradient(145deg,#29434c,#192d38 30%,#0f2029);box-shadow:inset 0 1px 0 #e9ffff35,inset 0 -2px 2px #0009,0 3px 0 #071219,0 7px 15px #0007}
+button:not(.linkbutton){position:relative;isolation:isolate;overflow:hidden;min-height:44px;border-radius:10px;border:1px solid #64c7b6;background:linear-gradient(180deg,#c0fff1 0%,#7be9d5 12%,#43c5b2 48%,#228a80 92%,#1b6a65 100%);color:#06282a;text-shadow:0 1px #ffffff6b;box-shadow:inset 0 1px 0 #fff9,inset 0 3px 3px #ffffff2e,inset 0 -3px 2px #003b3a9c,0 3px 0 #0a4945,0 7px 11px #0009;transition:transform .12s ease,box-shadow .12s ease,filter .12s ease}
+button:not(.linkbutton)::before{content:"";pointer-events:none;position:absolute;left:7px;right:7px;top:2px;height:34%;border-radius:8px 8px 40% 40%;background:linear-gradient(#ffffff36,#ffffff00);z-index:-1}
+button.secondary,.nav button,.viewtabs button{background:linear-gradient(180deg,#48626e 0%,#314955 8%,#243a46 45%,#152832 89%,#12212b 100%);color:#edf9fa;border:1px solid #627e8b;text-shadow:0 1px 2px #000c;box-shadow:inset 0 1px 0 #ffffff59,inset 0 3px 2px #ffffff13,inset 0 -3px 1px #0009,0 3px 0 #07141c,0 7px 11px #0009}
+button:not(.linkbutton):active{transform:translateY(3px);box-shadow:inset 0 3px 8px #0008,inset 0 1px 1px #ffffff1c,0 1px 0 #092b2b,0 2px 4px #0008;filter:brightness(.9)}
+button:focus-visible{outline:2px solid #a5fff0;outline-offset:3px}
+button:disabled{filter:saturate(.45);opacity:.57}
+.nav button.active,.viewtabs button.active{background:linear-gradient(180deg,#5ac7b5 0%,#318d81 14%,#206b62 65%,#174b48 100%);color:#f4fffd;border-color:#8df3d8;text-shadow:0 1px 2px #003b34;box-shadow:inset 0 1px 0 #ffffff80,inset 0 -2px 2px #073b36,0 3px 0 #092a28,0 0 13px #48e3c142,0 7px 11px #0009}
+#venueTabs button[data-venue="Bærum Kulturhus"].active{background:linear-gradient(#4cb989,#166749);border-color:#79dfac;box-shadow:inset 0 1px #ffffff75,0 3px #093b2a,0 0 12px #36c77b3c}
+#venueTabs button[data-venue="Sandvika Teater"].active{background:linear-gradient(#cf6574,#852c3c);border-color:#ec8e9b;box-shadow:inset 0 1px #ffffff75,0 3px #49131c,0 0 12px #f1647b35}
+.viewtabs button{min-height:72px;gap:7px}
+.viewtabs button.active svg{filter:drop-shadow(0 0 5px #b5fff19a)}
+input,select{border:1px solid #5a7781;border-radius:9px;background:linear-gradient(180deg,#07131b,#10222c);box-shadow:inset 0 3px 8px #000c,inset 0 1px 1px #0009,0 1px 0 #ffffff14}
+input:focus,select:focus{border-color:#8bead8;box-shadow:inset 0 3px 8px #0009,0 0 0 2px #5ae4ca4d}
+.pill{border-color:#448c80;background:linear-gradient(#153d3c,#0c252a);box-shadow:inset 0 1px #ffffff2a,0 0 11px #4be0c326}
+#connection::before{filter:drop-shadow(0 0 5px #5cffb8)}
+.equipment-list-summary,.notice{box-shadow:inset 0 1px #ffffff15,0 3px 8px #0003}
+@media(hover:hover){button:not(:disabled):hover{filter:brightness(1.09)}}
+@media(max-width:390px){.viewtabs button{min-height:68px}.header-actions{gap:5px}}
+@media(prefers-reduced-motion:reduce){button:not(.linkbutton){transition:none}}
+/* Keep the existing black-theme option consistent with Hybrid Console */
+body.theme-black .card,body.theme-black .stat{background:linear-gradient(145deg,#30383b,#191f22 12%,#0b0f12 88%);border-color:#59666c}
+body.theme-black .nav button,body.theme-black .viewtabs button,body.theme-black button.secondary{background:linear-gradient(#424c51,#222b30 25%,#11191d);border-color:#64747b;color:#f0f8f9}
+body.theme-black .nav button.active,body.theme-black .viewtabs button.active{background:linear-gradient(#4d9e90,#1a6559 65%,#12453f);border-color:#91ddcf;color:white}
+body.theme-black button:not(.secondary):not(.linkbutton):not(.active){background:linear-gradient(#ffffff,#d6e2e3 25%,#a1b1b6 90%);border-color:#d3e0e2;color:#102025}
 </style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>KULÔTEA</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v4.0</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
 <section id="login" class="card"><h1>Logg inn</h1><p class="muted">Bruk din godkjente LO-konto. Ingen lagerdata lagres i nettleserens lokale utstyrsregister.</p><form id="loginForm"><label>E-post<input id="email" type="email" autocomplete="username" required></label><label>Passord<input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" type="submit">Logg inn</button></form><button class="linkbutton" id="forgotButton" type="button">Glemt passord?</button><p id="loginError" class="error" role="alert"></p></section>
 <section id="forgot" class="card hidden"><h1>Tilbakestill passord</h1><p class="muted">Skriv inn e-postadressen din. Du får en lenke for å velge nytt passord.</p><form id="forgotForm"><label>E-post<input id="resetEmail" type="email" autocomplete="email" required></label><button id="sendReset" type="submit">Send tilbakestillingslenke</button></form><p id="forgotMessage" role="status"></p><button class="secondary" id="backLogin" type="button">Tilbake til innlogging</button></section>
