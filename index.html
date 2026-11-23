@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>LO – BK / ST · v3.3</title><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icon-192.png"><style>
+<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>LO – BK / ST · v3.4</title><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icon-192.png"><style>
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#091525;color:#e8f1fa}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
 header{position:sticky;top:0;z-index:3;background:#0c1b2d;border-bottom:1px solid #28415a;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -49,11 +49,11 @@ body.theme-black .brand span{color:#fff}
 body.theme-black #venueTabs button[data-venue="Bærum Kulturhus"].active{background:#1c6742;color:white}
 body.theme-black #venueTabs button[data-venue="Sandvika Teater"].active{background:#8d2735;color:white}
 
-/* v3.3: søkbare, lesbare utstyrsvalg på mobil */
+/* v3.4: søkbare, lesbare utstyrsvalg på mobil */
 .picker-search{margin:5px 0 8px!important;border-color:#548c9a!important}
 .picker-help{font-size:12px;color:#a9bed0;margin:3px 0 9px}
 #moveEquipment option,#search option{font-size:16px}
-</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>LO</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v3.3</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
+</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>LO</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v3.4</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
 <section id="login" class="card"><h1>Logg inn</h1><p class="muted">Bruk din godkjente LO-konto. Ingen lagerdata lagres i nettleserens lokale utstyrsregister.</p><form id="loginForm"><label>E-post<input id="email" type="email" autocomplete="username" required></label><label>Passord<input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" type="submit">Logg inn</button></form><button class="linkbutton" id="forgotButton" type="button">Glemt passord?</button><p id="loginError" class="error" role="alert"></p></section>
 <section id="forgot" class="card hidden"><h1>Tilbakestill passord</h1><p class="muted">Skriv inn e-postadressen din. Du får en lenke for å velge nytt passord.</p><form id="forgotForm"><label>E-post<input id="resetEmail" type="email" autocomplete="email" required></label><button id="sendReset" type="submit">Send tilbakestillingslenke</button></form><p id="forgotMessage" role="status"></p><button class="secondary" id="backLogin" type="button">Tilbake til innlogging</button></section>
 <section id="newPassword" class="card hidden"><h1>Opprett nytt passord</h1><p class="muted">Velg et nytt passord for LO-kontoen din.</p><form id="newPasswordForm"><label>Nytt passord<input id="newPass" type="password" autocomplete="new-password" minlength="8" required></label><label>Gjenta nytt passord<input id="confirmPass" type="password" autocomplete="new-password" minlength="8" required></label><button id="savePassword" type="submit">Lagre nytt passord</button></form><p id="passwordMessage" role="status"></p></section>
@@ -127,18 +127,18 @@ function updateMoveForm(){
 }
 function updateMoveEquipment(){
  const old=$('moveEquipment').value,from=$('moveFrom').value,q=$('moveSearchText').value;
- // Uten valgt rom: full rullemeny over opptalt utstyr, som i tidligere LO.
- // Med valgt rom: vis bare beholdningen som kan flyttes derfra.
- const quantities=new Map();
- for(const s of stock){
-  if(s.quantity<=0||!locations.some(l=>l.id===s.location_id)||(from&&s.location_id!==from))continue;
-  quantities.set(s.equipment_id,(quantities.get(s.equipment_id)||0)+s.quantity);
- }
- const rows=equipment.filter(e=>quantities.has(e.id)&&matchesEquipment(e,q))
+ // Hele registeret er alltid søkbart, uavhengig av valgt fra-rom.
+ const rows=equipment.filter(e=>matchesEquipment(e,q))
   .sort((a,b)=>equipmentLabel(a).localeCompare(equipmentLabel(b),'no'));
- $('moveEquipment').innerHTML='<option value="">Velg utstyr / modell</option>'+rows.map(e=>`<option value="${escapeHTML(e.id)}">${escapeHTML(equipmentLabel(e))} · ${quantities.get(e.id)} stk.</option>`).join('');
+ const label=e=>{
+  const inRoom=stock.filter(s=>s.equipment_id===e.id&&s.location_id===from).reduce((n,s)=>n+s.quantity,0);
+  const total=stock.filter(s=>s.equipment_id===e.id&&s.quantity>0&&locations.some(l=>l.id===s.location_id)).reduce((n,s)=>n+s.quantity,0);
+  const status=from?(inRoom>0?`${inRoom} stk. i valgt rom`:total>0?'Ikke i valgt rom':'Ikke opptalt / uten plassering'):(total>0?`${total} stk. registrert`:'Ikke opptalt / uten plassering');
+  return `${equipmentLabel(e)} · ${status}`;
+ };
+ $('moveEquipment').innerHTML='<option value="">Velg utstyr / modell</option>'+rows.map(e=>`<option value="${escapeHTML(e.id)}">${escapeHTML(label(e))}</option>`).join('');
  if(rows.some(e=>e.id===old))$('moveEquipment').value=old;
- $('moveAvailable').textContent=from?`${rows.length} utstyrstyper med beholdning i valgt rom. Alle rom kan velges i rommenyen.`:`${rows.length} utstyrstyper med opptalt beholdning. Velg utstyr og deretter fra-rom.`;
+ $('moveAvailable').textContent=`${rows.length} av ${equipment.length} utstyrsposter. Hele registeret er søkbart, også utstyr uten beholdning.`;
  updateMoveTo();
 }
 function updateMoveColors(){
@@ -152,11 +152,20 @@ function updateMoveTo(){
  const options=locations.filter(l=>l.id!==from).sort((a,b)=>locLabel(a).localeCompare(locLabel(b),'no'));
  $('moveTo').innerHTML='<option value="">Velg mottakerrom</option>'+options.map(l=>`<option value="${escapeHTML(l.id)}">${escapeHTML(locLabel(l))}</option>`).join('');
  if(options.some(l=>l.id===old))$('moveTo').value=old;
- const current=stock.find(s=>s.equipment_id===$('moveEquipment').value&&s.location_id===from);
+ const eq=$('moveEquipment').value;
+ const current=stock.find(s=>s.equipment_id===eq&&s.location_id===from&&s.quantity>0);
  $('moveQuantity').max=current?.quantity||1;
  if(current&&(!$('moveQuantity').value||Number($('moveQuantity').value)>current.quantity))$('moveQuantity').value=current.quantity;
  if(!current)$('moveQuantity').value='';
- if(!from&&$('moveEquipment').value){const eq=$('moveEquipment').value;const where=stock.filter(s=>s.equipment_id===eq&&s.quantity>0).map(s=>{const l=locations.find(l=>l.id===s.location_id);return l?locLabel(l)+' ('+s.quantity+' stk.)':null}).filter(Boolean);$('moveAvailable').textContent='Finnes i: '+(where.join(', ')||'ingen opptalt plassering')+'. Velg Fra rom.';}
+ if(eq){
+  const where=stock.filter(s=>s.equipment_id===eq&&s.quantity>0).map(s=>{
+   const l=locations.find(l=>l.id===s.location_id);
+   return l?`${locLabel(l)} (${s.quantity} stk.)`:null;
+  }).filter(Boolean);
+  const description=where.length?'Registrert i: '+where.join(', ')+'.':'Ikke opptalt / mangler plassering. Kan ikke flyttes før beholdningen er registrert.';
+  $('moveAvailable').textContent=description+(from&&!current&&where.length?' Ingen flyttbar beholdning i valgt fra-rom.':'');
+ }
+ $('moveSubmit').disabled=!current;
  updateMoveColors();
 }
 async function load(){$('status').textContent='Henter utstyr fra Supabase …';$('refresh').disabled=true;try{const [a,b,c]=await Promise.all([db.from('lo_equipment').select('id,name,category,manufacturer,model,serial_number,notes,count_status,source_row').order('name').range(0,999),db.from('lo_stock').select('equipment_id,location_id,quantity').range(0,999),db.from('lo_locations').select('id,venue,room').range(0,999)]);for(const r of [a,b,c])if(r.error)throw r.error;equipment=a.data||[];stock=b.data||[];locations=c.data||[];updateEquipmentPicker();updateRooms();updateMoveForm();updateRegisterRooms();const byId=new Map(locations.map(l=>[l.id,l]));const totals={'Bærum Kulturhus':0,'Sandvika Teater':0};for(const s of stock){const venue=byId.get(s.location_id)?.venue;if(venue in totals)totals[venue]+=s.quantity;}$('equipmentCount').textContent=equipment.length;$('bkCount').textContent=totals['Bærum Kulturhus'];$('stCount').textContent=totals['Sandvika Teater'];$('status').textContent='Sist oppdatert '+new Date().toLocaleTimeString('no-NO',{hour:'2-digit',minute:'2-digit'});render();}catch(e){$('status').textContent='Kunne ikke hente lagerdata: '+errorText(e);}finally{$('refresh').disabled=false;}}
