@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>KULÔTEA – BK / ST · v5.0</title><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="application-name" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest?v=40"><link rel="apple-touch-icon" sizes="180x180" href="./kulotea-touch-v41.png"><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><style>
+<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>KULÔTEA – BK / ST · v5.1</title><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="application-name" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest?v=40"><link rel="apple-touch-icon" sizes="180x180" href="./kulotea-touch-v41.png"><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><style>
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#091525;color:#e8f1fa}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
 header{position:sticky;top:0;z-index:3;background:#0c1b2d;border-bottom:1px solid #28415a;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -373,7 +373,7 @@ body.theme-black select{
  background-image:linear-gradient(110deg,transparent,#ffffff24 37%,transparent 60%),linear-gradient(#47545a,#1d292e 13%,#0b1215 74%,#28383d)!important;
 }
 
-/* v5.0: interactive stock displays */
+/* v5.1: interactive stock displays */
 .stats button.stat-action:not(.linkbutton){display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-width:0;white-space:normal;color:#f5fbfa;text-shadow:none;background:linear-gradient(160deg,#47616b 0%,#233b47 12%,#142631 58%,#10202a 100%);border:1px solid #627d88;box-shadow:inset 0 1px #ffffff70,inset 0 -3px #0008,0 4px 0 #061219,0 7px 15px #0008;overflow:hidden;position:relative;}
 .stats button.stat-action .num{display:block;color:#f5fbfa}.stats button.stat-action .small{font-weight:500}.stat-hint{font-size:10px;color:#b8d9d8;margin-top:6px;font-weight:600}.stats button.stat-action:nth-child(1){--stat-glow:#55cbb7}.stats button.stat-action:nth-child(2){--stat-glow:#53c787}.stats button.stat-action:nth-child(3){--stat-glow:#dc6c76}.stats button.stat-action::before{background:var(--stat-glow);box-shadow:0 0 10px var(--stat-glow)}
 .stats button.stat-action[aria-pressed="true"]{border-color:var(--stat-glow);box-shadow:inset 0 1px #ffffff70,inset 0 0 15px #ffffff12,0 0 12px var(--stat-glow)}
@@ -381,7 +381,16 @@ body.theme-black select{
 body.theme-black .stats button.stat-action:not(.linkbutton){background:linear-gradient(155deg,#424d52,#222b30 20%,#10191e 85%);color:#fff}
 
 #view-equipment{scroll-margin-top:110px}
-</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>KULÔTEA</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v5.0</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
+
+/* v5.1: restore native checkbox appearance in both themes */
+input[type="checkbox"],body.theme-black input[type="checkbox"]{
+ -webkit-appearance:checkbox;appearance:auto;accent-color:#279b70;
+ width:23px;min-width:23px;height:23px;min-height:23px;padding:0;margin:0 8px 0 0;
+ background:initial;border:initial;box-shadow:none;flex-shrink:0;vertical-align:middle;
+}
+#dxFields label{min-height:44px;cursor:pointer;touch-action:manipulation;}
+#dxFields label:has(input:checked){color:#a5e9c7;}
+</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>KULÔTEA</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v5.1</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
 <section id="login" class="card"><h1>Logg inn</h1><p class="muted">Bruk din godkjente LO-konto. Ingen lagerdata lagres i nettleserens lokale utstyrsregister.</p><form id="loginForm"><label>E-post<input id="email" type="email" autocomplete="username" required></label><label>Passord<input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" type="submit">Logg inn</button></form><button class="linkbutton" id="forgotButton" type="button">Glemt passord?</button><p id="loginError" class="error" role="alert"></p></section>
 <section id="forgot" class="card hidden"><h1>Tilbakestill passord</h1><p class="muted">Skriv inn e-postadressen din. Du får en lenke for å velge nytt passord.</p><form id="forgotForm"><label>E-post<input id="resetEmail" type="email" autocomplete="email" required></label><button id="sendReset" type="submit">Send tilbakestillingslenke</button></form><p id="forgotMessage" role="status"></p><button class="secondary" id="backLogin" type="button">Tilbake til innlogging</button></section>
 <section id="newPassword" class="card hidden"><h1>Opprett nytt passord</h1><p class="muted">Velg et nytt passord for LO-kontoen din.</p><form id="newPasswordForm"><label>Nytt passord<input id="newPass" type="password" autocomplete="new-password" minlength="8" required></label><label>Gjenta nytt passord<input id="confirmPass" type="password" autocomplete="new-password" minlength="8" required></label><button id="savePassword" type="submit">Lagre nytt passord</button></form><p id="passwordMessage" role="status"></p></section>
@@ -833,7 +842,7 @@ $('venue').addEventListener('change',()=>document.querySelectorAll('#venueTabs b
 if(hash.get('type')==='recovery'||query.get('type')==='recovery')recoveryMode=true;
 db.auth.onAuthStateChange(event=>{if(event==='PASSWORD_RECOVERY'){recoveryMode=true;showPanel('newPassword');$('connection').textContent='NYTT PASSORD';}});
 
-// v5.0: open stock overview with clean filters; no database writes.
+// v5.1: open stock overview with clean filters; no database writes.
 function clearStockSelection(){document.querySelectorAll('[data-stock-venue]').forEach(b=>b.setAttribute('aria-pressed','false'));}
 document.querySelectorAll('[data-stock-venue]').forEach(b=>b.addEventListener('click',()=>{
  const venue=b.dataset.stockVenue;
@@ -848,7 +857,7 @@ document.querySelectorAll('[data-stock-venue]').forEach(b=>b.addEventListener('c
 for(const id of ['search','venue','room','countFilter','equipmentSearchText'])$(id).addEventListener(id==='equipmentSearchText'?'input':'change',clearStockSelection);
 document.querySelectorAll('#venueTabs button,#viewTabs button,#roomOverview').forEach(b=>b.addEventListener('click',clearStockSelection));
 
-// v5.0: read-only full workbook export, independent of UI filters.
+// v5.1: read-only full workbook export, independent of UI filters.
 let excelLoader;
 function loadExcel(){
  if(window.ExcelJS)return Promise.resolve(window.ExcelJS);
@@ -903,7 +912,9 @@ $('exportExcel').addEventListener('click',async()=>{
  if(rows.length)ws.autoFilter={from:{row:3,column:1},to:{row:3+rows.length,column:headers.length}};return ws;
  }
 const dxColumns=[['Utstyrsnavn','name'],['Kategori','category'],['Produsent','manufacturer'],['Modell','model'],['Serienummer','serial_number'],['Bygg','venue'],['Hovedområde','group'],['Rom','room'],['Antall','quantity'],['Opptellingsstatus','status'],['Merknader','notes']];
-$('dxFields').innerHTML='<strong>Velg kolonner</strong>'+dxColumns.map(([label,key])=>`<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="width:auto" value="${key}" checked> ${label}</label>`).join('');
+$('dxFields').innerHTML='<strong>Velg kolonner</strong><div class="row"><button type="button" class="secondary" id="dxAll">Velg alle</button><button type="button" class="secondary" id="dxNone">Fjern alle</button></div>'+dxColumns.map(([label,key])=>`<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="width:auto" value="${key}" checked> ${label}</label>`).join('');
+$('dxAll').onclick=()=> $('dxFields').querySelectorAll('input[type="checkbox"]').forEach(c=>c.checked=true);
+$('dxNone').onclick=()=> $('dxFields').querySelectorAll('input[type="checkbox"]').forEach(c=>c.checked=false);
 let dxEquipment='all';
 $('excelMenu').onclick=()=>{const panel=$('excelPanel'),open=panel.classList.toggle('hidden')===false;$('excelMenu').setAttribute('aria-expanded',String(open));if(open)dxRooms();};
 function dxRooms(){hierarchy('dxRoom',locations.filter(l=>$('dxVenue').value==='all'||l.venue===$('dxVenue').value),'Alle rom',true,false,true);}
