@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>KULÔTEA – BK / ST · v5.2 · 11C.3</title><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="application-name" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest?v=40"><link rel="apple-touch-icon" sizes="180x180" href="./kulotea-touch-v41.png"><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><style>
+<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>KULÔTEA – BK / ST · v5.2 · 11D</title><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="application-name" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest?v=40"><link rel="apple-touch-icon" sizes="180x180" href="./kulotea-touch-v41.png"><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><style>
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#091525;color:#e8f1fa}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
 header{position:sticky;top:0;z-index:3;background:#0c1b2d;border-bottom:1px solid #28415a;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -393,7 +393,7 @@ input[type="checkbox"],body.theme-black input[type="checkbox"]{
 #viewTabs{grid-template-columns:repeat(3,minmax(0,1fr))}#countPreview{white-space:pre-line}#countForm button{width:100%;margin-top:10px}
 #deviationTab{grid-column:1/-1;min-height:52px} #countForm input,#countForm select,#countRoomGroup,#deviationPanel select,#deviationPanel textarea{background:#142b38!important;color:#fff!important;text-shadow:none!important;-webkit-text-fill-color:#fff!important} #countForm input::placeholder{color:#aabdc7!important;-webkit-text-fill-color:#aabdc7!important} #deviationPanel .item{overflow-wrap:anywhere} #deviationPanel button{margin:6px 4px 6px 0} 
 .count-status-chip{display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap;max-width:100%;padding:5px 8px;border:1px solid var(--cs-border);border-radius:8px;background:#142b38;color:var(--cs-fg);font-size:12px;font-weight:600;line-height:1.35}
-</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>KULÔTEA</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v5.2 · 11C.3</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
+</style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>KULÔTEA</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v5.2 · 11D</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
 <section id="login" class="card"><h1>Logg inn</h1><p class="muted">Bruk din godkjente LO-konto. Ingen lagerdata lagres i nettleserens lokale utstyrsregister.</p><form id="loginForm"><label>E-post<input id="email" type="email" autocomplete="username" required></label><label>Passord<input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" type="submit">Logg inn</button></form><button class="linkbutton" id="forgotButton" type="button">Glemt passord?</button><p id="loginError" class="error" role="alert"></p></section>
 <section id="forgot" class="card hidden"><h1>Tilbakestill passord</h1><p class="muted">Skriv inn e-postadressen din. Du får en lenke for å velge nytt passord.</p><form id="forgotForm"><label>E-post<input id="resetEmail" type="email" autocomplete="email" required></label><button id="sendReset" type="submit">Send tilbakestillingslenke</button></form><p id="forgotMessage" role="status"></p><button class="secondary" id="backLogin" type="button">Tilbake til innlogging</button></section>
 <section id="newPassword" class="card hidden"><h1>Opprett nytt passord</h1><p class="muted">Velg et nytt passord for LO-kontoen din.</p><form id="newPasswordForm"><label>Nytt passord<input id="newPass" type="password" autocomplete="new-password" minlength="8" required></label><label>Gjenta nytt passord<input id="confirmPass" type="password" autocomplete="new-password" minlength="8" required></label><button id="savePassword" type="submit">Lagre nytt passord</button></form><p id="passwordMessage" role="status"></p></section>
@@ -415,7 +415,7 @@ const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 const errorText=e=>e?.message||'Ukjent feil';
 async function membership(user){if(!user)return null;const {data,error}=await db.from('lo_members').select('approved,role,display_name').eq('user_id',user.id).maybeSingle();if(error)throw error;return data?.approved?data:null;}
 function showPanel(id){for(const panel of ['login','forgot','newPassword','app'])$(panel).classList.toggle('hidden',panel!==id);}
-async function showSession(){if(recoveryMode){showPanel('newPassword');$('connection').textContent='NYTT PASSORD';return;}const {data:{user}}=await db.auth.getUser();if(!user){showPanel('login');$('connection').textContent='IKKE INNLOGGET';return;}try{member=await membership(user);if(!member){$('loginError').textContent='Kontoen er ikke godkjent for LO. Kontakt administrator.';showPanel('login');$('connection').textContent='IKKE GODKJENT';return;}$('countTab').classList.toggle('hidden',!canCount());$('deviationTab').classList.toggle('hidden',!canCount());showPanel('app');$('connection').textContent='TILKOBLET';$('who').textContent=(member.display_name||'Ukjent bruker')+' · '+member.role;await load();}catch(e){$('loginError').textContent=errorText(e);showPanel('login');}}
+async function showSession(){if(recoveryMode){showPanel('newPassword');$('connection').textContent='NYTT PASSORD';return;}const {data:{user}}=await db.auth.getUser();if(!user){member=null;showPanel('login');$('connection').textContent='IKKE INNLOGGET';return;}try{member=await membership(user);if(!member||!accessLevel()){member=null;$('loginError').textContent='Kontoen er ikke godkjent for LO. Kontakt administrator.';showPanel('login');$('connection').textContent='IKKE GODKJENT';return;}applyRoleUI();showPanel('app');$('connection').textContent='TILKOBLET';$('who').textContent=(member.display_name||'Ukjent bruker')+' · '+roleLabels[member.role];await load();if(canCount())loadDeviations();}catch(e){member=null;$('loginError').textContent=errorText(e);showPanel('login');}}
 function venueShort(v){return v==='Bærum Kulturhus'?'BK':v==='Sandvika Teater'?'ST':v;}
 function locLabel(l){return venueShort(l.venue)+' · '+(l.room_group&&l.room_group!==l.room?l.room_group+' · ':'')+l.room;}
 function roomColor(l){
@@ -645,7 +645,7 @@ function render(){
    <div class="small">${escapeHTML([e.category,e.manufacturer,e.model].filter(Boolean).join(' · '))}</div>
    <div class="chips">${countStatusChip("BK",e.count_status_bk)}${countStatusChip("ST",e.count_status_st)}</div>
    ${canDecideCount()?`<div class="chips">${countStatusAction(e,"BK",e.count_status_bk)}${countStatusAction(e,"ST",e.count_status_st)}</div>`:''}
-   <div class="chips">${chips}</div>${member?.role==='admin'?`<button type="button" class="secondary editbtn" data-edit="${escapeHTML(e.id)}">Rediger</button>`:''}</article>`;
+   <div class="chips">${chips}</div>${canEdit()?`<button type="button" class="secondary editbtn" data-edit="${escapeHTML(e.id)}">Rediger</button>`:''}</article>`;
  }).join('')||'<p class="muted">Ingen registrert beholdning i dette utvalget.</p>';
 }
 
@@ -653,8 +653,7 @@ function goPage(direction){currentPage+=direction;render();$('view-equipment').s
 $('prevPage').addEventListener('click',()=>goPage(-1));
 $('nextPage').addEventListener('click',()=>goPage(1));
 function switchView(view){
- if(view==='count'&&!canCount())return;
- if(view==='deviations'&&!canCount())return;
+ if(!canView(view))return;
  if(view==='count')refreshCountPicker();
  if(view==='deviations')loadDeviations();
  for(const p of document.querySelectorAll('.viewpane'))p.classList.toggle('hidden',p.id!=='view-'+view);
@@ -805,14 +804,14 @@ $('exportPdf').addEventListener('click',async()=>{
 });
 $('refreshHistory').addEventListener('click',loadHistory);
 $('items').addEventListener('click',e=>{
- const b=e.target.closest('[data-edit]');if(!b||member?.role!=='admin')return;
+ const b=e.target.closest('[data-edit]');if(!b||!canEdit())return;
  const item=equipment.find(x=>x.id===b.dataset.edit);if(!item)return;
  for(const [id,v] of Object.entries({editId:item.id,editName:item.name,editCategory:item.category,editManufacturer:item.manufacturer,editModel:item.model,editSerial:item.serial_number,editNotes:item.notes}))$(id).value=v||'';
  $('editMessage').textContent='';$('editCard').classList.remove('hidden');$('editCard').scrollIntoView({behavior:'smooth'});
 });
 $('editCancel').addEventListener('click',()=>$('editCard').classList.add('hidden'));
 $('editForm').addEventListener('submit',async e=>{
- e.preventDefault();if(member?.role!=='admin')return;
+ e.preventDefault();if(!canEdit())return;
  if(!confirm('Lagre endringer i utstyrsregisteret?'))return;
  $('editSave').disabled=true;$('editMessage').textContent='Lagrer …';
  const {error}=await db.rpc('lo_update_equipment_metadata',{
@@ -830,7 +829,7 @@ $('regVenue').addEventListener('change',updateRegisterRooms);
 $('regLocation').addEventListener('change',updateRegisterColor);
 $('registerForm').addEventListener('submit',async e=>{
  e.preventDefault();const msg=$('regMessage');msg.className='error';
- if(member?.role!=='admin'){msg.textContent='Kun administrator kan registrere utstyr.';return;}
+ if(!canMove()){msg.textContent='Registrering krever tilgang som tekniker eller høyere.';return;}
  const name=$('regName').value.trim(),qty=Number($('regQuantity').value),loc=$('regLocation').value;
  const room=locations.find(l=>l.id===loc);
  if(!name||!room||!Number.isSafeInteger(qty)||qty<1){msg.textContent='Fyll inn navn, rom og gyldig antall.';return;}
@@ -854,7 +853,7 @@ $('moveFrom').addEventListener('change',updateMoveEquipment);
 $('moveSearchText').addEventListener('input',updateMoveEquipment);
 $('equipmentSearchText').addEventListener('input',()=>{updateEquipmentPicker();currentPage=0;render();});$('moveTo').addEventListener('change',updateMoveColors);
 $('moveForm').addEventListener('submit',async e=>{
- e.preventDefault();
+ e.preventDefault();if(!canMove())return;
  const equipmentId=$('moveEquipment').value,from=$('moveFrom').value,to=$('moveTo').value;
  const quantity=Number($('moveQuantity').value);
  const current=stock.find(s=>s.equipment_id===equipmentId&&s.location_id===from);
@@ -1036,7 +1035,19 @@ $('dxGo').onclick=async()=>{
 };
 
 // v5.2 step 11A: physical count, server is authoritative.
-function canCount(){return ['internal','technician','manager','admin'].includes(member?.role);}
+const roleLabels=Object.freeze({external:'Ekstern',internal:'Intern',technician:'Tekniker',manager:'Lageransvarlig',admin:'Admin'});
+const roleLevels=Object.freeze({external:1,internal:2,technician:3,manager:4,admin:5});
+function accessLevel(){return member?.approved===true&&Object.hasOwn(roleLevels,member.role)?roleLevels[member.role]:0;}
+function canCount(){return accessLevel()>=2;}
+function canMove(){return accessLevel()>=3;}
+function canEdit(){return accessLevel()>=4;}
+function canView(view){const levels={equipment:1,rooms:1,history:1,count:2,deviations:2,move:3,register:3};return Object.hasOwn(levels,view)&&accessLevel()>=levels[view];}
+function applyRoleUI(){
+ for(const b of document.querySelectorAll('#viewTabs button'))b.classList.toggle('hidden',!canView(b.dataset.view));
+ $('editCard').classList.add('hidden');
+ $('moveCount').classList.add('hidden');
+ switchView('equipment');
+}
 function refreshCountPicker(){
  const old=$('countEquipment').value;
  $('countEquipment').innerHTML='<option value="">Velg utstyr</option>'+equipment.filter(e=>matchesEquipment(e,$('countSearch').value)).map(e=>`<option value="${escapeHTML(e.id)}">${escapeHTML(equipmentLabel(e))}</option>`).join('');
@@ -1065,7 +1076,7 @@ for(const id of ['countSearch','countEquipment','countVenue','countRoomGroup','c
 $('countForm').onsubmit=async e=>{e.preventDefault();if(!canCount())return;const id=$('countEquipment').value,l=locations.find(x=>x.id===$('countRoom').value),raw=$('countQuantity').value,n=Number(raw),msg=$('countMessage');hideCountPendingLink();msg.className='error';if(!id||!l||l.room==='Ufordelt'||raw===''||!Number.isSafeInteger(n)||n<0||n>100000){msg.textContent='Velg utstyr, fysisk rom og gyldig antall.';return;}if(!confirm(`Registrer totalt ${n} stk. i ${locLabel(l)}?`))return;$('countSubmit').disabled=true;let saved=false;try{const {data,error}=await db.rpc('lo_register_count',{p_equipment_id:id,p_location_id:l.id,p_counted_quantity:n,p_notes:$('countNotes').value.trim()||null});if(error)throw error;saved=true;const result=await db.from('lo_counts').select('approval_status,difference,unallocated_deducted').eq('id',data).single();if(result.error)throw result.error;msg.className='success';msg.textContent=result.data.approval_status==='pending'?'Opptelling lagret. Avvik venter på godkjenning. Beholdningen er uendret.':`Opptelling godkjent. ${result.data.unallocated_deducted} stk. trukket fra Ufordelt.`;$('countQuantity').value='';$('countNotes').value='';await load();refreshCountPicker();await loadDeviations();if(result.data.approval_status==='pending')$('countPendingLink').classList.remove('hidden');}catch(err){if(!saved&&/ventende avvik/i.test(errorText(err)))$('countPendingLink').classList.remove('hidden');msg.textContent=(saved?'Opptelling lagret, men status kunne ikke hentes. Ikke registrer på nytt: ':'Kunne ikke registrere: ')+errorText(err);}finally{$('countSubmit').disabled=false;}};
 
 // 11B: discrepancy review. All stock changes are performed by the RPC.
-function canDecideCount(){return ['technician','manager','admin'].includes(member?.role);}
+function canDecideCount(){return canMove();}
 let deviationRows=[],deviationBusy=false,deviationRequest=0;
 async function loadDeviations(){
  const panel=$('deviationPanel'),list=$('deviationList'),msg=$('deviationMessage');
@@ -1111,7 +1122,7 @@ async function decideDeviation(r,approve,notes){
 }
 $('deviationFilter').onchange=loadDeviations;$('deviationRefresh').onclick=loadDeviations;
 
-await db.auth.initialize();await showSession();if(canCount())loadDeviations();
+await db.auth.initialize();await showSession();
 </script><script>
 (function(){
  const key='lo-layout-theme';
