@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>KULÔTEA – BK / ST · v5.2 · 11C.1</title><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="application-name" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest?v=40"><link rel="apple-touch-icon" sizes="180x180" href="./kulotea-touch-v41.png"><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><style>
+<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091423"><title>KULÔTEA – BK / ST · v5.2 · 11C.1A</title><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="application-name" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><link rel="manifest" href="./manifest.webmanifest?v=40"><link rel="apple-touch-icon" sizes="180x180" href="./kulotea-touch-v41.png"><meta name="apple-mobile-web-app-title" content="KULÔTEA"><meta name="apple-mobile-web-app-capable" content="yes"><style>
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#091525;color:#e8f1fa}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
 header{position:sticky;top:0;z-index:3;background:#0c1b2d;border-bottom:1px solid #28415a;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -391,7 +391,7 @@ input[type="checkbox"],body.theme-black input[type="checkbox"]{
 #dxFields label{min-height:44px;cursor:pointer;touch-action:manipulation;}
 #dxFields label:has(input:checked){color:#a5e9c7;}
 #viewTabs{grid-template-columns:repeat(3,minmax(0,1fr))}#countPreview{white-space:pre-line}#countForm button{width:100%;margin-top:10px}
-#deviationTab{grid-column:1/-1;min-height:52px} #countForm input,#countForm select,#countRoomGroup,#deviationPanel select,#deviationPanel textarea{background:#142b38!important;color:#fff!important;text-shadow:none!important;-webkit-text-fill-color:#fff!important} #countForm input::placeholder{color:#aabdc7!important;-webkit-text-fill-color:#aabdc7!important} #deviationPanel .item{overflow-wrap:anywhere} #deviationPanel button{margin:6px 4px 6px 0} </style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>KULÔTEA</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v5.2 · 11C.1</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
+#deviationTab{grid-column:1/-1;min-height:52px} #countForm input,#countForm select,#countRoomGroup,#deviationPanel select,#deviationPanel textarea{background:#142b38!important;color:#fff!important;text-shadow:none!important;-webkit-text-fill-color:#fff!important} #countForm input::placeholder{color:#aabdc7!important;-webkit-text-fill-color:#aabdc7!important} #deviationPanel .item{overflow-wrap:anywhere} #deviationPanel button{margin:6px 4px 6px 0} </style><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}</script></head><body><header><div><div class="brand">◉ <span>KULÔTEA</span></div><div class="sub">Lydteknisk oversikt · BK / ST · v5.2 · 11C.1A</div></div><div class="header-actions"><button type="button" class="secondary" id="themeToggle" aria-label="Bytt mellom svart og blå layout">◐ Svart</button><span class="pill" id="connection">IKKE INNLOGGET</span></div></header><main>
 <section id="login" class="card"><h1>Logg inn</h1><p class="muted">Bruk din godkjente LO-konto. Ingen lagerdata lagres i nettleserens lokale utstyrsregister.</p><form id="loginForm"><label>E-post<input id="email" type="email" autocomplete="username" required></label><label>Passord<input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" type="submit">Logg inn</button></form><button class="linkbutton" id="forgotButton" type="button">Glemt passord?</button><p id="loginError" class="error" role="alert"></p></section>
 <section id="forgot" class="card hidden"><h1>Tilbakestill passord</h1><p class="muted">Skriv inn e-postadressen din. Du får en lenke for å velge nytt passord.</p><form id="forgotForm"><label>E-post<input id="resetEmail" type="email" autocomplete="email" required></label><button id="sendReset" type="submit">Send tilbakestillingslenke</button></form><p id="forgotMessage" role="status"></p><button class="secondary" id="backLogin" type="button">Tilbake til innlogging</button></section>
 <section id="newPassword" class="card hidden"><h1>Opprett nytt passord</h1><p class="muted">Velg et nytt passord for LO-kontoen din.</p><form id="newPasswordForm"><label>Nytt passord<input id="newPass" type="password" autocomplete="new-password" minlength="8" required></label><label>Gjenta nytt passord<input id="confirmPass" type="password" autocomplete="new-password" minlength="8" required></label><button id="savePassword" type="submit">Lagre nytt passord</button></form><p id="passwordMessage" role="status"></p></section>
@@ -582,7 +582,7 @@ function render(){
   if(selectedEquipment!=='all'&&e.id!==selectedEquipment)return false;
   // Ved valgt utstyr vises alltid hvor det faktisk finnes, selv om romfilteret er feil.
   if(selectedEquipment!=='all')return true;
-  if(room!=='all'&&!stock.some(s=>s.equipment_id===e.id&&s.quantity>0&&locMap.has(s.location_id)&&roomMatches(locMap.get(s.location_id),room)))return false;
+  if(room!=='all'&&!stock.some(s=>s.equipment_id===e.id&&s.quantity>0&&locMap.has(s.location_id)&&(venue==='all'||locMap.get(s.location_id).venue===venue)&&roomMatches(locMap.get(s.location_id),room)))return false;
   if($('roomGroup')?.value&&room==='all'&&!stock.some(s=>s.equipment_id===e.id&&s.quantity>0&&locMap.has(s.location_id)&&locMap.get(s.location_id).venue+'|'+locMap.get(s.location_id).room_group===$('roomGroup').value))return false;
   if(venue!=='all'&&![...stock].some(s=>s.equipment_id===e.id&&s.quantity>0&&locMap.get(s.location_id)?.venue===venue))return false;
   return true;
@@ -866,9 +866,15 @@ function clearStockSelection(){document.querySelectorAll('[data-stock-venue]').f
 document.querySelectorAll('[data-stock-venue]').forEach(b=>b.addEventListener('click',()=>{
  const venue=b.dataset.stockVenue;
  $('equipmentSearchText').value='';updateEquipmentPicker();$('search').value='all';
- $('venue').value=venue;updateRooms();$('roomGroup').value='';$('roomGroup').onchange();$('room').value='all';updateRoomColorInfo();
- $('countFilter').value=venue==='all'?'all':'counted';
- if(b.dataset.stockUnallocated==='true'){$('countFilter').value='all';$('roomGroup').value=UNASSIGNED;$('roomGroup').onchange();$('room').value=UNASSIGNED;updateRoomColorInfo();}
+ $('venue').value=venue;
+ $('room').value='all';if($('roomGroup'))$('roomGroup').value='';
+ updateRooms();
+ const reserveOnly=b.hasAttribute('data-stock-unallocated');
+ $('countFilter').value='all';
+ $('roomGroup').value=reserveOnly?UNASSIGNED:'';
+ $('roomGroup').onchange();
+ $('room').value=reserveOnly?UNASSIGNED:'all';
+ updateRoomColorInfo();
  document.querySelectorAll('#venueTabs button').forEach(t=>t.classList.toggle('active',t.dataset.venue===venue));
  currentPage=0;switchView('equipment');setEquipmentListExpanded(true);render();
  clearStockSelection();b.setAttribute('aria-pressed','true');
